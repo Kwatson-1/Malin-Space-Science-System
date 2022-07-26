@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Galileo;
@@ -29,17 +30,19 @@ namespace Satellite_Data_Processing_Project
             Galileo.ReadData var = new Galileo.ReadData();
             dataSensorA.Clear();
             dataSensorB.Clear();
-            for(int i = 0; i < max; i++)
+            for (int i = 0; i < max; i++)
             {
                 dataSensorA.AddLast(var.SensorA((double)numericUpDownMu.Value, (double)numericUpDownSigma.Value));
                 dataSensorB.AddLast(var.SensorB((double)numericUpDownMu.Value, (double)numericUpDownSigma.Value));
             }
             ShowAllSensorData();
+            DisplayListBoxData(dataSensorA, listBoxA);
+            DisplayListBoxData(dataSensorB, listBoxB);
         }
-        public void ShowAllSensorData()
+        private void ShowAllSensorData()
         {
             listView1.Items.Clear();
-            for(int i = 0; i < dataSensorA.Count; i++)
+            for (int i = 0; i < dataSensorA.Count; i++)
             {
                 ListViewItem lvi = new ListViewItem(dataSensorA.ElementAt(i).ToString());
                 lvi.SubItems.Add(dataSensorB.ElementAt(i).ToString());
@@ -47,18 +50,38 @@ namespace Satellite_Data_Processing_Project
             }
         }
 
-        public int NumberOfNodes(LinkedList<double>, )
+        private int NumberOfNodes(LinkedList<double> LinkedList)
         {
-
+            return LinkedList.Count;
         }
         private void ButtonLoadData_Click(object sender, EventArgs e)
         {
             LoadData();
         }
-
+        private void DisplayListBoxData(LinkedList<double> linkedListName, ListBox listBoxName)
+        {
+            foreach (var i in linkedListName)
+            {
+                listBoxName.Items.Add(i);
+            }
+        }
+        private Boolean ValidateTextBox(KeyPressEventArgs keyPress)
+        {
+                return (!char.IsControl(keyPress.KeyChar) && !char.IsDigit(keyPress.KeyChar) && (keyPress.KeyChar != '.'));
+        }
         private void ApplicationForm_Load(object sender, EventArgs e)
         {
 
         }
+        private void textBoxSearchTargetA_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = ValidateTextBox(e);
+        }
+
+        private void textBoxSearchTargetB_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = ValidateTextBox(e);
+        }
     }
 }
+    

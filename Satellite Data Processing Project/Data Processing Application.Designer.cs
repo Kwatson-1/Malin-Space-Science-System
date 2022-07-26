@@ -331,11 +331,13 @@
             // 
             // textBoxSearchTargetA
             // 
+            this.textBoxSearchTargetA.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.textBoxSearchTargetA.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxSearchTargetA.Location = new System.Drawing.Point(126, 43);
             this.textBoxSearchTargetA.Name = "textBoxSearchTargetA";
             this.textBoxSearchTargetA.Size = new System.Drawing.Size(119, 20);
             this.textBoxSearchTargetA.TabIndex = 0;
+            this.textBoxSearchTargetA.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxSearchTargetA_KeyPress);
             // 
             // groupBox2
             // 
@@ -399,6 +401,7 @@
             this.textBoxSearchTargetB.Name = "textBoxSearchTargetB";
             this.textBoxSearchTargetB.Size = new System.Drawing.Size(119, 20);
             this.textBoxSearchTargetB.TabIndex = 14;
+            this.textBoxSearchTargetB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxSearchTargetB_KeyPress);
             // 
             // label4
             // 

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{205E565F-9165-4538-8918-71E89008018B}</ProjectGuid>
+    <ProjectGuid>{36F0AE60-2BF9-4AD8-9F3D-3923B174D362}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Malin_Space_Science_Application</RootNamespace>
-    <AssemblyName>Malin Space Science Application</AssemblyName>
+    <RootNamespace>Satellite_Data_Processing_Project</RootNamespace>
+    <AssemblyName>Satellite Data Processing Project</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Galileo">
+      <HintPath>.\Galileo.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,14 +49,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Data Processing Application.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Data Processing Application.Designer.cs">
+      <DependentUpon>Data Processing Application.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Data Processing Application.resx">
+      <DependentUpon>Data Processing Application.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

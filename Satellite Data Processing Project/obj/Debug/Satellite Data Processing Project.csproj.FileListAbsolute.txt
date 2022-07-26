@@ -1,0 +1,24 @@
+H:\Semester3\Complex Data Structures\Assessment 1\Satellite Data Processing Project\bin\Debug\Satellite Data Processing Project.exe.config
+H:\Semester3\Complex Data Structures\Assessment 1\Satellite Data Processing Project\bin\Debug\Satellite Data Processing Project.exe
+H:\Semester3\Complex Data Structures\Assessment 1\Satellite Data Processing Project\bin\Debug\Satellite Data Processing Project.pdb
+H:\Semester3\Complex Data Structures\Assessment 1\Satellite Data Processing Project\obj\Debug\Satellite Data Processing Project.csproj.AssemblyReference.cache
+H:\Semester3\Complex Data Structures\Assessment 1\Satellite Data Processing Project\obj\Debug\Satellite Data Processing Project.csproj.SuggestedBindingRedirects.cache
+H:\Semester3\Complex Data Structures\Assessment 1\Satellite Data Processing Project\obj\Debug\Satellite_Data_Processing_Project.Properties.Resources.resources
+H:\Semester3\Complex Data Structures\Assessment 1\Satellite Data Processing Project\obj\Debug\Satellite Data Processing Project.csproj.GenerateResource.cache
+H:\Semester3\Complex Data Structures\Assessment 1\Satellite Data Processing Project\obj\Debug\Satellite Data Processing Project.csproj.CoreCompileInputs.cache
+H:\Semester3\Complex Data Structures\Assessment 1\Satellite Data Processing Project\obj\Debug\Satellite Data Processing Project.exe
+H:\Semester3\Complex Data Structures\Assessment 1\Satellite Data Processing Project\obj\Debug\Satellite Data Processing Project.pdb
+H:\Semester3\Complex Data Structures\Assessment 1\Satellite Data Processing Project\obj\Debug\Satellite_Data_Processing_Project.ApplicationForm.resources
+D:\Semester3\Complex Data Structures\Assessment 1\Satellite Data Processing Project\bin\Debug\Satellite Data Processing Project.exe.config
+D:\Semester3\Complex Data Structures\Assessment 1\Satellite Data Processing Project\bin\Debug\Satellite Data Processing Project.exe
+D:\Semester3\Complex Data Structures\Assessment 1\Satellite Data Processing Project\bin\Debug\Satellite Data Processing Project.pdb
+D:\Semester3\Complex Data Structures\Assessment 1\Satellite Data Processing Project\obj\Debug\Satellite Data Processing Project.csproj.AssemblyReference.cache
+D:\Semester3\Complex Data Structures\Assessment 1\Satellite Data Processing Project\obj\Debug\Satellite Data Processing Project.csproj.SuggestedBindingRedirects.cache
+D:\Semester3\Complex Data Structures\Assessment 1\Satellite Data Processing Project\obj\Debug\Satellite_Data_Processing_Project.ApplicationForm.resources
+D:\Semester3\Complex Data Structures\Assessment 1\Satellite Data Processing Project\obj\Debug\Satellite_Data_Processing_Project.Properties.Resources.resources
+D:\Semester3\Complex Data Structures\Assessment 1\Satellite Data Processing Project\obj\Debug\Satellite Data Processing Project.csproj.GenerateResource.cache
+D:\Semester3\Complex Data Structures\Assessment 1\Satellite Data Processing Project\obj\Debug\Satellite Data Processing Project.csproj.CoreCompileInputs.cache
+D:\Semester3\Complex Data Structures\Assessment 1\Satellite Data Processing Project\obj\Debug\Satellite Data Processing Project.exe
+D:\Semester3\Complex Data Structures\Assessment 1\Satellite Data Processing Project\obj\Debug\Satellite Data Processing Project.pdb
+D:\Semester3\Complex Data Structures\Assessment 1\Satellite Data Processing Project\bin\Debug\Galileo.dll
+D:\Semester3\Complex Data Structures\Assessment 1\Satellite Data Processing Project\obj\Debug\Satellite Data Processing Project.csproj.CopyComplete

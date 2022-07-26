@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Malin_Space_Science_Application
+namespace Satellite_Data_Processing_Project
 {
     internal static class Program
     {
@@ -16,7 +16,7 @@ namespace Malin_Space_Science_Application
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new ApplicationForm());
         }
     }
 }

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Malin_Space_Science_Application.Properties
+namespace Satellite_Data_Processing_Project.Properties
 {
 
 
@@ -44,7 +44,7 @@ namespace Malin_Space_Science_Application.Properties
             {
                 if ((resourceMan == null))
                 {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Malin_Space_Science_Application.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Satellite_Data_Processing_Project.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

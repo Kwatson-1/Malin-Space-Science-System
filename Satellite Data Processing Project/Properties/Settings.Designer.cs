@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Malin_Space_Science_Application.Properties
+namespace Satellite_Data_Processing_Project.Properties
 {
 
 

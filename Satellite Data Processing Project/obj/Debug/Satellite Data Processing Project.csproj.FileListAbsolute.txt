@@ -34,3 +34,4 @@ C:\Users\Kyle\Documents\GitHub\Malin-Space-Science-System\Satellite Data Process
 C:\Users\Kyle\Documents\GitHub\Malin-Space-Science-System\Satellite Data Processing Project\bin\Debug\Satellite Data Processing Project.pdb
 C:\Users\Kyle\Documents\GitHub\Malin-Space-Science-System\Satellite Data Processing Project\bin\Debug\Galileo.dll
 C:\Users\Kyle\Documents\GitHub\Malin-Space-Science-System\Satellite Data Processing Project\obj\Debug\Satellite Data Processing Project.csproj.CopyComplete
+C:\Users\Kyle\Documents\GitHub\Malin-Space-Science-System\Satellite Data Processing Project\obj\Debug\Satellite Data Processing Project.csproj.SuggestedBindingRedirects.cache

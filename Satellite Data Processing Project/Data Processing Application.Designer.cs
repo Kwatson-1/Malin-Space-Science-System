@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.numericUpDownSigma = new System.Windows.Forms.NumericUpDown();
@@ -39,36 +40,37 @@
             this.buttonLoadData = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonInsertionSortA = new System.Windows.Forms.Button();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBoxTimeInsertionA = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.buttonSelectionSortA = new System.Windows.Forms.Button();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBoxTimeSelectionA = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.buttonRecursiveSearchA = new System.Windows.Forms.Button();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBoxTimeRecursiveA = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.buttonIterativeSearchA = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBoxTimeIterativeA = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxSearchTargetA = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.listBoxB = new System.Windows.Forms.ListBox();
             this.buttonInsertionSortB = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBoxTimeInsertionB = new System.Windows.Forms.TextBox();
             this.textBoxSearchTargetB = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.buttonSelectionSortB = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.textBoxTimeSelectionB = new System.Windows.Forms.TextBox();
+            this.textBoxTimeIterativeB = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.buttonIterativeSearchB = new System.Windows.Forms.Button();
             this.buttonRecursiveSearchB = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.textBoxTimeRecursiveB = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSigma)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMu)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -182,16 +184,16 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.buttonInsertionSortA);
-            this.groupBox1.Controls.Add(this.textBox6);
+            this.groupBox1.Controls.Add(this.textBoxTimeInsertionA);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.buttonSelectionSortA);
-            this.groupBox1.Controls.Add(this.textBox5);
+            this.groupBox1.Controls.Add(this.textBoxTimeSelectionA);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.buttonRecursiveSearchA);
-            this.groupBox1.Controls.Add(this.textBox4);
+            this.groupBox1.Controls.Add(this.textBoxTimeRecursiveA);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.buttonIterativeSearchA);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.textBoxTimeIterativeA);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.textBoxSearchTargetA);
@@ -213,14 +215,14 @@
             this.buttonInsertionSortA.Text = "Sort";
             this.buttonInsertionSortA.UseVisualStyleBackColor = true;
             // 
-            // textBox6
+            // textBoxTimeInsertionA
             // 
-            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(126, 389);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(118, 20);
-            this.textBox6.TabIndex = 12;
+            this.textBoxTimeInsertionA.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxTimeInsertionA.Location = new System.Drawing.Point(126, 389);
+            this.textBoxTimeInsertionA.Name = "textBoxTimeInsertionA";
+            this.textBoxTimeInsertionA.ReadOnly = true;
+            this.textBoxTimeInsertionA.Size = new System.Drawing.Size(118, 20);
+            this.textBoxTimeInsertionA.TabIndex = 12;
             // 
             // label8
             // 
@@ -241,15 +243,16 @@
             this.buttonSelectionSortA.TabIndex = 10;
             this.buttonSelectionSortA.Text = "Sort";
             this.buttonSelectionSortA.UseVisualStyleBackColor = true;
+            this.buttonSelectionSortA.Click += new System.EventHandler(this.buttonSelectionSortA_Click);
             // 
-            // textBox5
+            // textBoxTimeSelectionA
             // 
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(126, 299);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(118, 20);
-            this.textBox5.TabIndex = 9;
+            this.textBoxTimeSelectionA.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxTimeSelectionA.Location = new System.Drawing.Point(126, 299);
+            this.textBoxTimeSelectionA.Name = "textBoxTimeSelectionA";
+            this.textBoxTimeSelectionA.ReadOnly = true;
+            this.textBoxTimeSelectionA.Size = new System.Drawing.Size(118, 20);
+            this.textBoxTimeSelectionA.TabIndex = 9;
             // 
             // label7
             // 
@@ -271,14 +274,14 @@
             this.buttonRecursiveSearchA.Text = "Search";
             this.buttonRecursiveSearchA.UseVisualStyleBackColor = true;
             // 
-            // textBox4
+            // textBoxTimeRecursiveA
             // 
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(127, 209);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(118, 20);
-            this.textBox4.TabIndex = 6;
+            this.textBoxTimeRecursiveA.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxTimeRecursiveA.Location = new System.Drawing.Point(127, 209);
+            this.textBoxTimeRecursiveA.Name = "textBoxTimeRecursiveA";
+            this.textBoxTimeRecursiveA.ReadOnly = true;
+            this.textBoxTimeRecursiveA.Size = new System.Drawing.Size(118, 20);
+            this.textBoxTimeRecursiveA.TabIndex = 6;
             // 
             // label6
             // 
@@ -300,14 +303,14 @@
             this.buttonIterativeSearchA.Text = "Search";
             this.buttonIterativeSearchA.UseVisualStyleBackColor = true;
             // 
-            // textBox2
+            // textBoxTimeIterativeA
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(127, 119);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(118, 20);
-            this.textBox2.TabIndex = 3;
+            this.textBoxTimeIterativeA.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxTimeIterativeA.Location = new System.Drawing.Point(127, 119);
+            this.textBoxTimeIterativeA.Name = "textBoxTimeIterativeA";
+            this.textBoxTimeIterativeA.ReadOnly = true;
+            this.textBoxTimeIterativeA.Size = new System.Drawing.Size(118, 20);
+            this.textBoxTimeIterativeA.TabIndex = 3;
             // 
             // label5
             // 
@@ -337,25 +340,25 @@
             this.textBoxSearchTargetA.Name = "textBoxSearchTargetA";
             this.textBoxSearchTargetA.Size = new System.Drawing.Size(119, 20);
             this.textBoxSearchTargetA.TabIndex = 0;
-            this.textBoxSearchTargetA.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxSearchTargetA_KeyPress);
+            this.textBoxSearchTargetA.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxSearchTargetA_KeyPress);
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.listBoxB);
             this.groupBox2.Controls.Add(this.buttonInsertionSortB);
-            this.groupBox2.Controls.Add(this.textBox3);
+            this.groupBox2.Controls.Add(this.textBoxTimeInsertionB);
             this.groupBox2.Controls.Add(this.textBoxSearchTargetB);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Controls.Add(this.buttonSelectionSortB);
             this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.textBox7);
-            this.groupBox2.Controls.Add(this.textBox9);
+            this.groupBox2.Controls.Add(this.textBoxTimeSelectionB);
+            this.groupBox2.Controls.Add(this.textBoxTimeIterativeB);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.buttonIterativeSearchB);
             this.groupBox2.Controls.Add(this.buttonRecursiveSearchB);
             this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.textBox8);
+            this.groupBox2.Controls.Add(this.textBoxTimeRecursiveB);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(444, 33);
             this.groupBox2.Name = "groupBox2";
@@ -385,14 +388,14 @@
             this.buttonInsertionSortB.Text = "Sort";
             this.buttonInsertionSortB.UseVisualStyleBackColor = true;
             // 
-            // textBox3
+            // textBoxTimeInsertionB
             // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(6, 389);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(118, 20);
-            this.textBox3.TabIndex = 26;
+            this.textBoxTimeInsertionB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxTimeInsertionB.Location = new System.Drawing.Point(6, 389);
+            this.textBoxTimeInsertionB.Name = "textBoxTimeInsertionB";
+            this.textBoxTimeInsertionB.ReadOnly = true;
+            this.textBoxTimeInsertionB.Size = new System.Drawing.Size(118, 20);
+            this.textBoxTimeInsertionB.TabIndex = 26;
             // 
             // textBoxSearchTargetB
             // 
@@ -432,6 +435,7 @@
             this.buttonSelectionSortB.TabIndex = 24;
             this.buttonSelectionSortB.Text = "Sort";
             this.buttonSelectionSortB.UseVisualStyleBackColor = true;
+            this.buttonSelectionSortB.Click += new System.EventHandler(this.buttonSelectionSortB_Click);
             // 
             // label11
             // 
@@ -443,23 +447,23 @@
             this.label11.TabIndex = 16;
             this.label11.Text = "Iterative Binary Search";
             // 
-            // textBox7
+            // textBoxTimeSelectionB
             // 
-            this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(6, 299);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(118, 20);
-            this.textBox7.TabIndex = 23;
+            this.textBoxTimeSelectionB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxTimeSelectionB.Location = new System.Drawing.Point(6, 299);
+            this.textBoxTimeSelectionB.Name = "textBoxTimeSelectionB";
+            this.textBoxTimeSelectionB.ReadOnly = true;
+            this.textBoxTimeSelectionB.Size = new System.Drawing.Size(118, 20);
+            this.textBoxTimeSelectionB.TabIndex = 23;
             // 
-            // textBox9
+            // textBoxTimeIterativeB
             // 
-            this.textBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox9.Location = new System.Drawing.Point(7, 119);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.ReadOnly = true;
-            this.textBox9.Size = new System.Drawing.Size(118, 20);
-            this.textBox9.TabIndex = 17;
+            this.textBoxTimeIterativeB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxTimeIterativeB.Location = new System.Drawing.Point(7, 119);
+            this.textBoxTimeIterativeB.Name = "textBoxTimeIterativeB";
+            this.textBoxTimeIterativeB.ReadOnly = true;
+            this.textBoxTimeIterativeB.Size = new System.Drawing.Size(118, 20);
+            this.textBoxTimeIterativeB.TabIndex = 17;
             // 
             // label9
             // 
@@ -501,14 +505,19 @@
             this.label10.TabIndex = 19;
             this.label10.Text = "Recursive Binary Search";
             // 
-            // textBox8
+            // textBoxTimeRecursiveB
             // 
-            this.textBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox8.Location = new System.Drawing.Point(7, 209);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.ReadOnly = true;
-            this.textBox8.Size = new System.Drawing.Size(118, 20);
-            this.textBox8.TabIndex = 20;
+            this.textBoxTimeRecursiveB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxTimeRecursiveB.Location = new System.Drawing.Point(7, 209);
+            this.textBoxTimeRecursiveB.Name = "textBoxTimeRecursiveB";
+            this.textBoxTimeRecursiveB.ReadOnly = true;
+            this.textBoxTimeRecursiveB.Size = new System.Drawing.Size(118, 20);
+            this.textBoxTimeRecursiveB.TabIndex = 20;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // ApplicationForm
             // 
@@ -554,33 +563,34 @@
         private System.Windows.Forms.TextBox textBoxSearchTargetA;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button buttonInsertionSortA;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox textBoxTimeInsertionA;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button buttonSelectionSortA;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBoxTimeSelectionA;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button buttonRecursiveSearchA;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBoxTimeRecursiveA;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button buttonIterativeSearchA;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBoxTimeIterativeA;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ListBox listBoxB;
         private System.Windows.Forms.Button buttonInsertionSortB;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBoxTimeInsertionB;
         private System.Windows.Forms.TextBox textBoxSearchTargetB;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button buttonSelectionSortB;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox textBoxTimeSelectionB;
+        private System.Windows.Forms.TextBox textBoxTimeIterativeB;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button buttonIterativeSearchB;
         private System.Windows.Forms.Button buttonRecursiveSearchB;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox textBoxTimeRecursiveB;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }
 

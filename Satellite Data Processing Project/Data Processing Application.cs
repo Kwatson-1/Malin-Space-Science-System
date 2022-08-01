@@ -26,6 +26,7 @@ namespace Satellite_Data_Processing_Project
         #region Global variables
         private static LinkedList<double> dataSensorA = new LinkedList<double>();
         private static LinkedList<double> dataSensorB = new LinkedList<double>();
+        // Stopwatch variable made global so instantiation only has to be conducted once.
         Stopwatch stopwatch = new Stopwatch();
 
         #endregion
@@ -91,7 +92,7 @@ namespace Satellite_Data_Processing_Project
         // If the key press is not a control character and not a digit and not a decimal point returns true otherwise returns false.
         private Boolean ValidateTextBox(KeyPressEventArgs keyPress)
         {
-                return (!char.IsControl(keyPress.KeyChar) && !char.IsDigit(keyPress.KeyChar) && (keyPress.KeyChar != '.'));
+            return (!char.IsControl(keyPress.KeyChar) && !char.IsDigit(keyPress.KeyChar) && (keyPress.KeyChar != '.'));
         }
 
         //Utilizes the ValidateTextBox method to check whether a valid keypress has been entered into the related text box.
@@ -110,27 +111,83 @@ namespace Satellite_Data_Processing_Project
 
         }
         #endregion
-        private void SelectionSort(LinkedList<double> linkedListName)
+        #region Method selection sort
+        // Implements a selection method for sorting the target double linked list. Returns true if the sort was executed.
+        private bool SelectionSort(LinkedList<double> linkedListName)
         {
-            int min = 0;
-            int max = NumberOfNodes(linkedListName);
-            for (int i = 0; i < max; i++)
+            if (NumberOfNodes(linkedListName) > 0)
             {
-                min = i;
-                for(int j = i+1; j < max; j++)
+                int min = 0;
+                int max = NumberOfNodes(linkedListName);
+                for (int i = 0; i < max; i++)
                 {
-                    if (linkedListName.ElementAt(j).CompareTo(linkedListName.ElementAt(min)) < 0)
+                    min = i;
+                    for (int j = i + 1; j < max; j++)
                     {
-                        min = j;
+                        if (linkedListName.ElementAt(j).CompareTo(linkedListName.ElementAt(min)) < 0)
+                        {
+                            min = j;
+                        }
+                    }
+                    LinkedListNode<double> currentMin = linkedListName.Find(linkedListName.ElementAt(min));
+                    LinkedListNode<double> currentI = linkedListName.Find(linkedListName.ElementAt(i));
+                    var temp = currentMin.Value;
+                    currentMin.Value = currentI.Value;
+                    currentI.Value = temp;
+                }
+                return true;
+            }
+            else return false;
+        }
+        #endregion
+        #region Method insertion sort
+        private bool InsertionSort(LinkedList<double> linkedListName)
+        {
+            if (NumberOfNodes(linkedListName) > 0)
+            {
+                int max = NumberOfNodes(linkedListName);
+                for (int i = 0; i < max - 1; i++)
+                {
+                    for (int j = i + 1; j > 0; j--)
+                    {
+                        if (linkedListName.ElementAt(j - 1) > linkedListName.ElementAt(j))
+                        {
+                            LinkedListNode<double> current = linkedListName.Find(linkedListName.ElementAt(j));
+                            var temp = current.Previous.Value;
+                            current.Previous.Value = current.Value;
+                            current.Value = temp;
+                        }
                     }
                 }
-                LinkedListNode<double> currentMin = linkedListName.Find(linkedListName.ElementAt(min));
-                LinkedListNode<double> currentI = linkedListName.Find(linkedListName.ElementAt(i));
-                var temp = currentMin.Value;
-                currentMin.Value = currentI.Value;
-                currentI.Value = temp;
+                return true;
             }
+            else return false;
         }
+        #endregion
+        #region Method binary search iterative
+        private int BinarySearchIterative(LinkedList<double> linkedListName, int searchValue, int min, int max)
+        {
+            // searchValue == linkedListName.ElementAt(mid)
+            while (min <= max - 1)
+            {
+                int mid = min + max / 2;
+                if(Enumerable.Range((int)linkedListName.ElementAt(mid)-1, (int)linkedListName.ElementAt(mid) - 1).Contains(searchValue))
+                {
+                    return ++mid;
+                }
+                else if(searchValue < linkedListName.ElementAt(mid))
+                {
+                    max = mid - 1;
+                }
+                else
+                {
+                    min = mid + 1;
+                }
+            }
+            return min;
+        }
+        #endregion
+        #region Button selection sort A & B
         // Start time, execute method, stop time, display data, fill time box
         private void buttonSelectionSortA_Click(object sender, EventArgs e)
         {
@@ -139,7 +196,7 @@ namespace Satellite_Data_Processing_Project
             stopwatch.Stop();
             ShowAllSensorData();
             DisplayListBoxData(dataSensorA, listBoxA);
-            textBoxTimeSelectionA.Text = String.Format("{0} ms", stopwatch.ElapsedMilliseconds.ToString());
+            textBoxTimeSelectionA.Text = String.Format("{0} ms", stopwatch.ElapsedMilliseconds);
         }
 
         private void buttonSelectionSortB_Click(object sender, EventArgs e)
@@ -149,8 +206,39 @@ namespace Satellite_Data_Processing_Project
             stopwatch.Stop();
             ShowAllSensorData();
             DisplayListBoxData(dataSensorB, listBoxB);
-            textBoxTimeSelectionA.Text = String.Format("{0} ms", stopwatch.ElapsedMilliseconds.ToString());
-        }   
+            textBoxTimeSelectionB.Text = String.Format("{0} ms", stopwatch.ElapsedMilliseconds);
+        }
+        #endregion
+        #region Button insertion sort A & B
+        private void buttonInsertionSortA_Click(object sender, EventArgs e)
+        {
+            stopwatch.Restart();
+            InsertionSort(dataSensorA);
+            stopwatch.Stop();
+            ShowAllSensorData();
+            DisplayListBoxData(dataSensorA, listBoxA);
+            textBoxTimeInsertionA.Text = String.Format("{0} ms", stopwatch.ElapsedMilliseconds.ToString());
+        }
+
+        private void buttonInsertionSortB_Click(object sender, EventArgs e)
+        {
+            stopwatch.Restart();
+            InsertionSort(dataSensorB);
+            stopwatch.Stop();
+            ShowAllSensorData();
+            DisplayListBoxData(dataSensorB, listBoxB);
+            textBoxTimeInsertionB.Text = String.Format("{0} ms", stopwatch.ElapsedMilliseconds.ToString());
+        }
+        #endregion
+
+        private void buttonIterativeSearchA_Click(object sender, EventArgs e)
+        {
+            listView1.SelectedIndices = BinarySearchIterative(dataSensorA, int.Parse(textBoxSearchTargetA.Text), 0, NumberOfNodes(dataSensorA));
+        }
+
+        private void buttonIterativeSearchB_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
-        

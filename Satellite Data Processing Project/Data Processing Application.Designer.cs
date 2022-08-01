@@ -214,6 +214,7 @@
             this.buttonInsertionSortA.TabIndex = 13;
             this.buttonInsertionSortA.Text = "Sort";
             this.buttonInsertionSortA.UseVisualStyleBackColor = true;
+            this.buttonInsertionSortA.Click += new System.EventHandler(this.buttonInsertionSortA_Click);
             // 
             // textBoxTimeInsertionA
             // 
@@ -251,6 +252,7 @@
             this.textBoxTimeSelectionA.Location = new System.Drawing.Point(126, 299);
             this.textBoxTimeSelectionA.Name = "textBoxTimeSelectionA";
             this.textBoxTimeSelectionA.ReadOnly = true;
+            this.textBoxTimeSelectionA.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.textBoxTimeSelectionA.Size = new System.Drawing.Size(118, 20);
             this.textBoxTimeSelectionA.TabIndex = 9;
             // 
@@ -302,6 +304,7 @@
             this.buttonIterativeSearchA.TabIndex = 4;
             this.buttonIterativeSearchA.Text = "Search";
             this.buttonIterativeSearchA.UseVisualStyleBackColor = true;
+            this.buttonIterativeSearchA.Click += new System.EventHandler(this.buttonIterativeSearchA_Click);
             // 
             // textBoxTimeIterativeA
             // 
@@ -387,6 +390,7 @@
             this.buttonInsertionSortB.TabIndex = 27;
             this.buttonInsertionSortB.Text = "Sort";
             this.buttonInsertionSortB.UseVisualStyleBackColor = true;
+            this.buttonInsertionSortB.Click += new System.EventHandler(this.buttonInsertionSortB_Click);
             // 
             // textBoxTimeInsertionB
             // 
@@ -394,16 +398,20 @@
             this.textBoxTimeInsertionB.Location = new System.Drawing.Point(6, 389);
             this.textBoxTimeInsertionB.Name = "textBoxTimeInsertionB";
             this.textBoxTimeInsertionB.ReadOnly = true;
+            this.textBoxTimeInsertionB.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.textBoxTimeInsertionB.Size = new System.Drawing.Size(118, 20);
             this.textBoxTimeInsertionB.TabIndex = 26;
+            this.textBoxTimeInsertionB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBoxSearchTargetB
             // 
             this.textBoxSearchTargetB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxSearchTargetB.Location = new System.Drawing.Point(6, 43);
             this.textBoxSearchTargetB.Name = "textBoxSearchTargetB";
+            this.textBoxSearchTargetB.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.textBoxSearchTargetB.Size = new System.Drawing.Size(119, 20);
             this.textBoxSearchTargetB.TabIndex = 14;
+            this.textBoxSearchTargetB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxSearchTargetB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxSearchTargetB_KeyPress);
             // 
             // label4
@@ -412,6 +420,7 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(30, 346);
             this.label4.Name = "label4";
+            this.label4.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label4.Size = new System.Drawing.Size(69, 13);
             this.label4.TabIndex = 25;
             this.label4.Text = "Insertion Sort";
@@ -450,11 +459,13 @@
             // textBoxTimeSelectionB
             // 
             this.textBoxTimeSelectionB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxTimeSelectionB.Location = new System.Drawing.Point(6, 299);
+            this.textBoxTimeSelectionB.Location = new System.Drawing.Point(7, 299);
             this.textBoxTimeSelectionB.Name = "textBoxTimeSelectionB";
             this.textBoxTimeSelectionB.ReadOnly = true;
-            this.textBoxTimeSelectionB.Size = new System.Drawing.Size(118, 20);
+            this.textBoxTimeSelectionB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.textBoxTimeSelectionB.Size = new System.Drawing.Size(117, 20);
             this.textBoxTimeSelectionB.TabIndex = 23;
+            this.textBoxTimeSelectionB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBoxTimeIterativeB
             // 
@@ -462,8 +473,10 @@
             this.textBoxTimeIterativeB.Location = new System.Drawing.Point(7, 119);
             this.textBoxTimeIterativeB.Name = "textBoxTimeIterativeB";
             this.textBoxTimeIterativeB.ReadOnly = true;
+            this.textBoxTimeIterativeB.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.textBoxTimeIterativeB.Size = new System.Drawing.Size(118, 20);
             this.textBoxTimeIterativeB.TabIndex = 17;
+            this.textBoxTimeIterativeB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label9
             // 
@@ -484,6 +497,7 @@
             this.buttonIterativeSearchB.TabIndex = 18;
             this.buttonIterativeSearchB.Text = "Search";
             this.buttonIterativeSearchB.UseVisualStyleBackColor = true;
+            this.buttonIterativeSearchB.Click += new System.EventHandler(this.buttonIterativeSearchB_Click);
             // 
             // buttonRecursiveSearchB
             // 
@@ -511,8 +525,10 @@
             this.textBoxTimeRecursiveB.Location = new System.Drawing.Point(7, 209);
             this.textBoxTimeRecursiveB.Name = "textBoxTimeRecursiveB";
             this.textBoxTimeRecursiveB.ReadOnly = true;
+            this.textBoxTimeRecursiveB.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.textBoxTimeRecursiveB.Size = new System.Drawing.Size(118, 20);
             this.textBoxTimeRecursiveB.TabIndex = 20;
+            this.textBoxTimeRecursiveB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // contextMenuStrip1
             // 

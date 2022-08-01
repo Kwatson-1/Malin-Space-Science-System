@@ -35,3 +35,16 @@ C:\Users\Kyle\Documents\GitHub\Malin-Space-Science-System\Satellite Data Process
 C:\Users\Kyle\Documents\GitHub\Malin-Space-Science-System\Satellite Data Processing Project\bin\Debug\Galileo.dll
 C:\Users\Kyle\Documents\GitHub\Malin-Space-Science-System\Satellite Data Processing Project\obj\Debug\Satellite Data Processing Project.csproj.CopyComplete
 C:\Users\Kyle\Documents\GitHub\Malin-Space-Science-System\Satellite Data Processing Project\obj\Debug\Satellite Data Processing Project.csproj.SuggestedBindingRedirects.cache
+C:\Users\30048165\Documents\GitHub\Malin-Space-Science-System\Satellite Data Processing Project\bin\Debug\Satellite Data Processing Project.exe.config
+C:\Users\30048165\Documents\GitHub\Malin-Space-Science-System\Satellite Data Processing Project\bin\Debug\Satellite Data Processing Project.exe
+C:\Users\30048165\Documents\GitHub\Malin-Space-Science-System\Satellite Data Processing Project\bin\Debug\Satellite Data Processing Project.pdb
+C:\Users\30048165\Documents\GitHub\Malin-Space-Science-System\Satellite Data Processing Project\bin\Debug\Galileo.dll
+C:\Users\30048165\Documents\GitHub\Malin-Space-Science-System\Satellite Data Processing Project\obj\Debug\Satellite Data Processing Project.csproj.AssemblyReference.cache
+C:\Users\30048165\Documents\GitHub\Malin-Space-Science-System\Satellite Data Processing Project\obj\Debug\Satellite Data Processing Project.csproj.SuggestedBindingRedirects.cache
+C:\Users\30048165\Documents\GitHub\Malin-Space-Science-System\Satellite Data Processing Project\obj\Debug\Satellite_Data_Processing_Project.ApplicationForm.resources
+C:\Users\30048165\Documents\GitHub\Malin-Space-Science-System\Satellite Data Processing Project\obj\Debug\Satellite_Data_Processing_Project.Properties.Resources.resources
+C:\Users\30048165\Documents\GitHub\Malin-Space-Science-System\Satellite Data Processing Project\obj\Debug\Satellite Data Processing Project.csproj.GenerateResource.cache
+C:\Users\30048165\Documents\GitHub\Malin-Space-Science-System\Satellite Data Processing Project\obj\Debug\Satellite Data Processing Project.csproj.CoreCompileInputs.cache
+C:\Users\30048165\Documents\GitHub\Malin-Space-Science-System\Satellite Data Processing Project\obj\Debug\Satellite Data Processing Project.csproj.CopyComplete
+C:\Users\30048165\Documents\GitHub\Malin-Space-Science-System\Satellite Data Processing Project\obj\Debug\Satellite Data Processing Project.exe
+C:\Users\30048165\Documents\GitHub\Malin-Space-Science-System\Satellite Data Processing Project\obj\Debug\Satellite Data Processing Project.pdb

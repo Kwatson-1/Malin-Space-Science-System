@@ -108,7 +108,7 @@ namespace Satellite_Data_Processing_Project
         #region Method form load
         private void ApplicationForm_Load(object sender, EventArgs e)
         {
-
+                    
         }
         #endregion
         #region Method selection sort
@@ -171,7 +171,7 @@ namespace Satellite_Data_Processing_Project
             while (min <= max - 1)
             {
                 int mid = min + max / 2;
-                if(Enumerable.Range((int)linkedListName.ElementAt(mid)-1, (int)linkedListName.ElementAt(mid) - 1).Contains(searchValue))
+                if(searchValue == (int)linkedListName.ElementAt(mid))
                 {
                     return ++mid;
                 }
@@ -233,7 +233,7 @@ namespace Satellite_Data_Processing_Project
 
         private void buttonIterativeSearchA_Click(object sender, EventArgs e)
         {
-            listView1.SelectedIndices = BinarySearchIterative(dataSensorA, int.Parse(textBoxSearchTargetA.Text), 0, NumberOfNodes(dataSensorA));
+            listView1.Items[BinarySearchIterative(dataSensorA, int.Parse(textBoxSearchTargetA.Text), 0, NumberOfNodes(dataSensorA))].Selected = true;
         }
 
         private void buttonIterativeSearchB_Click(object sender, EventArgs e)

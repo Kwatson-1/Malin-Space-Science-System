@@ -47,3 +47,4 @@ C:\Users\30048165\Documents\GitHub\Malin-Space-Science-System\Satellite Data Pro
 C:\Users\30048165\Documents\GitHub\Malin-Space-Science-System\Satellite Data Processing Project\obj\Debug\Satellite Data Processing Project.csproj.CopyComplete
 C:\Users\30048165\Documents\GitHub\Malin-Space-Science-System\Satellite Data Processing Project\obj\Debug\Satellite Data Processing Project.exe
 C:\Users\30048165\Documents\GitHub\Malin-Space-Science-System\Satellite Data Processing Project\obj\Debug\Satellite Data Processing Project.pdb
+C:\Users\Kyle\Documents\GitHub\Malin-Space-Science-System\Satellite Data Processing Project\obj\Debug\Satellite Data Processing Project.csproj.SuggestedBindingRedirects.cache

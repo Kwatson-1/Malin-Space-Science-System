@@ -144,6 +144,7 @@
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnSensorA,
             this.columnSensorB});
+            this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(269, 86);
@@ -168,6 +169,7 @@
             this.listBoxA.FormattingEnabled = true;
             this.listBoxA.Location = new System.Drawing.Point(15, 62);
             this.listBoxA.Name = "listBoxA";
+            this.listBoxA.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.listBoxA.Size = new System.Drawing.Size(120, 407);
             this.listBoxA.TabIndex = 5;
             // 
@@ -244,7 +246,7 @@
             this.buttonSelectionSortA.TabIndex = 10;
             this.buttonSelectionSortA.Text = "Sort";
             this.buttonSelectionSortA.UseVisualStyleBackColor = true;
-            this.buttonSelectionSortA.Click += new System.EventHandler(this.buttonSelectionSortA_Click);
+            this.buttonSelectionSortA.Click += new System.EventHandler(this.ButtonSelectionSortA_Click);
             // 
             // textBoxTimeSelectionA
             // 
@@ -304,7 +306,7 @@
             this.buttonIterativeSearchA.TabIndex = 4;
             this.buttonIterativeSearchA.Text = "Search";
             this.buttonIterativeSearchA.UseVisualStyleBackColor = true;
-            this.buttonIterativeSearchA.Click += new System.EventHandler(this.buttonIterativeSearchA_Click);
+            this.buttonIterativeSearchA.Click += new System.EventHandler(this.ButtonIterativeSearchA_Click);
             // 
             // textBoxTimeIterativeA
             // 
@@ -378,6 +380,7 @@
             this.listBoxB.FormattingEnabled = true;
             this.listBoxB.Location = new System.Drawing.Point(128, 27);
             this.listBoxB.Name = "listBoxB";
+            this.listBoxB.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.listBoxB.Size = new System.Drawing.Size(120, 409);
             this.listBoxB.TabIndex = 14;
             // 
@@ -497,7 +500,7 @@
             this.buttonIterativeSearchB.TabIndex = 18;
             this.buttonIterativeSearchB.Text = "Search";
             this.buttonIterativeSearchB.UseVisualStyleBackColor = true;
-            this.buttonIterativeSearchB.Click += new System.EventHandler(this.buttonIterativeSearchB_Click);
+            this.buttonIterativeSearchB.Click += new System.EventHandler(this.ButtonIterativeSearchB_Click);
             // 
             // buttonRecursiveSearchB
             // 

@@ -28,9 +28,6 @@ namespace Satellite_Data_Processing_Project
         private static LinkedList<double> dataSensorB = new LinkedList<double>();
         // Stopwatch variable made global so instantiation only has to be conducted once.
         Stopwatch stopwatch = new Stopwatch();
-        // Global boolean variables to track whether sort function has been called.
-        private static bool dataASorted = false;
-        private static bool dataBSorted = false;
 
         #endregion
 
@@ -43,8 +40,7 @@ namespace Satellite_Data_Processing_Project
         {
             dataSensorA.Clear();
             dataSensorB.Clear();
-            dataASorted = false;
-            dataBSorted = false;
+
             int max = 400;
             Galileo.ReadData var = new Galileo.ReadData();
             for (int i = 0; i < max; i++)
@@ -125,28 +121,28 @@ namespace Satellite_Data_Processing_Project
         // Highlights the index returned by the binary search as well as 2 values on either side or as allowed by proximity to the min and max indexes.
         private void HighlightSearchIndex(int index, LinkedList<double> linkedListName, ListBox listBoxName)
         {
-            listView1.SelectedItems.Clear();
-            listView1.Select();
-            listBoxA.ClearSelected();
-            listBoxB.ClearSelected();
-            // If the binary search returns an index of 400 decrement by 1 so that the upper highlight selection consistently has 3 values. Without decrement only 2 values are highlighted.
-            if (index == 400)
-            {
-                index -= 1;
-            }
-            // Only highlights index inside a valid selection range.
-            for (int i = index - 2; i <= index + 2; i++)
-            {
-                if (i < 0 || i > NumberOfNodes(linkedListName) - 1)
+                listView1.SelectedItems.Clear();
+                listView1.Select();
+                listBoxA.ClearSelected();
+                listBoxB.ClearSelected();
+                // If the binary search returns an index of 400 decrement by 1 so that the upper highlight selection consistently has 3 values. Without decrement only 2 values are highlighted.
+                if (index == 400)
                 {
+                    index -= 1;
+                }
+                // Only highlights index inside a valid selection range.
+                for (int i = index - 2; i <= index + 2; i++)
+                {
+                    if (i < 0 || i > NumberOfNodes(linkedListName) - 1)
+                    {
 
+                    }
+                    else
+                    {
+                        listView1.Items[i].Selected = true;
+                        listBoxName.SelectedIndices.Add(i);
+                    }
                 }
-                else
-                {
-                    listView1.Items[i].Selected = true;
-                    listBoxName.SelectedIndices.Add(i);
-                }
-            }
         }
         #endregion
 
@@ -183,31 +179,32 @@ namespace Satellite_Data_Processing_Project
         // Start time, execute method, stop time, display data, fill time box
         private void ButtonSelectionSortA_Click(object sender, EventArgs e)
         {
-            stopwatch.Restart();
+            LoadData();
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start(); ;
             SelectionSort(dataSensorA);
             stopwatch.Stop();
-            dataASorted = true;
             ShowAllSensorData();
             DisplayListBoxData(dataSensorA, listBoxA);
-            textBoxTimeSelectionA.Text = String.Format("{0:0.00} ms", stopwatch.Elapsed.TotalMilliseconds);
+            textBoxTimeSelectionA.Text = String.Format("{0:0.##} ms", stopwatch.Elapsed.TotalMilliseconds);
         }
 
         private void buttonSelectionSortB_Click(object sender, EventArgs e)
         {
-            stopwatch.Restart();
+            LoadData();
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
             SelectionSort(dataSensorB);
             stopwatch.Stop();
-            dataBSorted = true;
             ShowAllSensorData();
             DisplayListBoxData(dataSensorB, listBoxB);
-            textBoxTimeSelectionB.Text = String.Format("{0:0.00} ms", stopwatch.Elapsed.TotalMilliseconds);
+            textBoxTimeSelectionB.Text = String.Format("{0:0.##} ms", stopwatch.Elapsed.TotalMilliseconds);
         }
         #endregion
 
         #region Method: insertion sort
         private bool InsertionSort(LinkedList<double> linkedListName)
         {
-
             if (NumberOfNodes(linkedListName) > 0)
             {
                 int max = NumberOfNodes(linkedListName);
@@ -232,66 +229,79 @@ namespace Satellite_Data_Processing_Project
         #region Button: insertion sort A & B
         private void buttonInsertionSortA_Click(object sender, EventArgs e)
         {
-            stopwatch.Restart();
+            LoadData();
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
             InsertionSort(dataSensorA);
             stopwatch.Stop();
-            dataBSorted = true;
             ShowAllSensorData();
             DisplayListBoxData(dataSensorA, listBoxA);
-            textBoxTimeInsertionA.Text = String.Format("{0:0.00} ms", stopwatch.Elapsed.TotalMilliseconds.ToString());
+            textBoxTimeInsertionA.Text = String.Format("{0:0.00} ms", stopwatch.Elapsed.TotalMilliseconds);
         }
 
         private void buttonInsertionSortB_Click(object sender, EventArgs e)
         {
-            stopwatch.Restart();
+            LoadData();
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
             InsertionSort(dataSensorB);
             stopwatch.Stop();
-            dataBSorted = true;
             ShowAllSensorData();
             DisplayListBoxData(dataSensorB, listBoxB);
-            textBoxTimeInsertionB.Text = String.Format("{0:0.00} ms", stopwatch.Elapsed.TotalMilliseconds.ToString());
+            textBoxTimeInsertionB.Text = String.Format("{0:0.00} ms", stopwatch.Elapsed.TotalMilliseconds);
         }
         #endregion
 
         #region Method: binary search iterative
         private int BinarySearchIterative(LinkedList<double> linkedListName, double searchValue, int min, int max)
         {
-            while (min <= max - 1)
+            if (CheckSorted(linkedListName))
             {
-                int mid = (min + max) / 2;
-                if (searchValue == linkedListName.ElementAt(mid))
+                while (min <= max - 1)
                 {
-                    return ++mid;
+                    int mid = (min + max) / 2;
+                    if (searchValue == linkedListName.ElementAt(mid))
+                    {
+                        return ++mid;
+                    }
+                    else if (searchValue < linkedListName.ElementAt(mid))
+                    {
+                        max = mid - 1;
+                    }
+                    else
+                    {
+                        min = mid + 1;
+                    }
                 }
-                else if (searchValue < linkedListName.ElementAt(mid))
-                {
-                    max = mid - 1;
-                }
-                else
-                {
-                    min = mid + 1;
-                }
+                return min;
             }
-            return min;
+            else
+            {
+                MessageBox.Show("List not sorted.");
+                return -1;
+            }
+            
         }
         #endregion
         #region Button: iterative search A & B
 
         private void ButtonIterativeSearchA_Click(object sender, EventArgs e)
         {
-            stopwatch.Restart();
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
             int index = BinarySearchIterative(dataSensorA, int.Parse(textBoxSearchTargetA.Text), 0, NumberOfNodes(dataSensorA));
             stopwatch.Stop();
             HighlightSearchIndex(index, dataSensorA, listBoxA);
-            textBoxTimeIterativeA.Text = String.Format("{0:0.00} ms", stopwatch.Elapsed.TotalMilliseconds);
+            textBoxTimeIterativeA.Text = String.Format("{0} ticks", stopwatch.Elapsed.Ticks);
         }
         private void ButtonIterativeSearchB_Click(object sender, EventArgs e)
         {
-            stopwatch.Restart();
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
             int index = BinarySearchIterative(dataSensorB, int.Parse(textBoxSearchTargetB.Text), 0, NumberOfNodes(dataSensorB));
             stopwatch.Stop();
             HighlightSearchIndex(index, dataSensorB, listBoxB);
-            textBoxTimeIterativeB.Text = String.Format("{0:0.00} ms", stopwatch.Elapsed.TotalMilliseconds);
+            textBoxTimeIterativeB.Text = String.Format("{0} ticks", stopwatch.Elapsed.Ticks);
 
         }
         #endregion
@@ -321,7 +331,8 @@ namespace Satellite_Data_Processing_Project
         #region Button: binary search recursive A & B
         private void ButtonRecursiveSearchA_Click(object sender, EventArgs e)
         {
-            stopwatch.Restart();
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
             int index = BinarySearchRecursive(dataSensorA, int.Parse(textBoxSearchTargetA.Text), 0, NumberOfNodes(dataSensorA));
             stopwatch.Stop();
             HighlightSearchIndex(index, dataSensorA, listBoxA);
@@ -330,11 +341,30 @@ namespace Satellite_Data_Processing_Project
 
         private void ButtonRecursiveSearchB_Click(object sender, EventArgs e)
         {
-            stopwatch.Restart();
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
             int index = BinarySearchRecursive(dataSensorB, int.Parse(textBoxSearchTargetB.Text), 0, NumberOfNodes(dataSensorB));
             stopwatch.Stop();
             HighlightSearchIndex(index, dataSensorB, listBoxB);
             textBoxTimeRecursiveB.Text = String.Format("{0:0.00} ms", stopwatch.Elapsed.TotalMilliseconds);
+        }
+        #endregion
+
+        #region Method: check lists sorted
+        public bool CheckSorted(LinkedList<double> linkedListName)
+        {
+            foreach (var i in linkedListName)
+            {
+                if (i < i + 1)
+                {
+
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return true;
         }
         #endregion
     }

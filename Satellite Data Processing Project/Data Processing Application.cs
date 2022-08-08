@@ -26,9 +26,6 @@ namespace Satellite_Data_Processing_Project
         #region Global variables
         private static LinkedList<double> dataSensorA = new LinkedList<double>();
         private static LinkedList<double> dataSensorB = new LinkedList<double>();
-        // Stopwatch variable made global so instantiation only has to be conducted once.
-        Stopwatch stopwatch = new Stopwatch();
-
         #endregion
 
         #region Method: load data
@@ -61,7 +58,7 @@ namespace Satellite_Data_Processing_Project
         }
         #endregion
 
-        #region Method: list view display 
+        #region Display: list view display 
         // Method for displaying the linked list data in the list view - does not fill list boxes.
         private void ShowAllSensorData()
         {
@@ -74,14 +71,6 @@ namespace Satellite_Data_Processing_Project
             }
         }
         #endregion
-        #region Method: count nodes
-        // Calls the LinkedList.Count method and returns the value as an integer
-        private int NumberOfNodes(LinkedList<double> LinkedList)
-        {
-            return LinkedList.Count;
-        }
-        #endregion
-
         #region Display: populate list box
         // Method populates the specified listbox with data from the specified linked list using a foreach loop.
         private void DisplayListBoxData(LinkedList<double> linkedListName, ListBox listBoxName)
@@ -93,11 +82,27 @@ namespace Satellite_Data_Processing_Project
             }
         }
         #endregion
+        #region Display: call all display methods
+        public void DisplayAll()
+        {
+            ShowAllSensorData();
+            DisplayListBoxData(dataSensorA, listBoxA);
+            DisplayListBoxData(dataSensorB, listBoxB);
+        }
+        #endregion
+
+        #region Method: count nodes
+        // Calls the LinkedList.Count method and returns the value as an integer
+        private int NumberOfNodes(LinkedList<double> LinkedList)
+        {
+            return LinkedList.Count;
+        }
+        #endregion
         #region Method: handle user textBox input
         // If the key press is not a control character and not a digit and not a decimal point returns true otherwise returns false.
         private Boolean ValidateTextBox(KeyPressEventArgs keyPress)
         {
-            return (!char.IsControl(keyPress.KeyChar) && !char.IsDigit(keyPress.KeyChar) && (keyPress.KeyChar != '.'));
+            return (!char.IsControl(keyPress.KeyChar) && !char.IsDigit(keyPress.KeyChar) && (keyPress.KeyChar != '.') && (keyPress.KeyChar != '-'));
         }
 
         //Utilizes the ValidateTextBox method to check whether a valid keypress has been entered into the related text box.
@@ -113,36 +118,47 @@ namespace Satellite_Data_Processing_Project
         #region Method: form load
         private void ApplicationForm_Load(object sender, EventArgs e)
         {
-            // Remove below methods
-            LoadData();
+
         }
         #endregion
         #region Method: search highlight
         // Highlights the index returned by the binary search as well as 2 values on either side or as allowed by proximity to the min and max indexes.
         private void HighlightSearchIndex(int index, LinkedList<double> linkedListName, ListBox listBoxName)
         {
-                listView1.SelectedItems.Clear();
-                listView1.Select();
-                listBoxA.ClearSelected();
-                listBoxB.ClearSelected();
-                // If the binary search returns an index of 400 decrement by 1 so that the upper highlight selection consistently has 3 values. Without decrement only 2 values are highlighted.
-                if (index == 400)
+            listBoxA.ClearSelected();
+            listBoxB.ClearSelected();
+            // If the binary search returns an index of 400 decrement by 1 so that the upper highlight selection consistently has 3 values. Without decrement only 2 values are highlighted.
+            if (index == 400)
+            {
+                index -= 1;
+            }
+            // Only highlights index inside a valid selection range.
+            for (int i = index - 2; i <= index + 2; i++)
+            {
+                if (i < 0 || i > NumberOfNodes(linkedListName) - 1)
                 {
-                    index -= 1;
-                }
-                // Only highlights index inside a valid selection range.
-                for (int i = index - 2; i <= index + 2; i++)
-                {
-                    if (i < 0 || i > NumberOfNodes(linkedListName) - 1)
-                    {
 
-                    }
-                    else
-                    {
-                        listView1.Items[i].Selected = true;
-                        listBoxName.SelectedIndices.Add(i);
-                    }
                 }
+                else
+                {
+                    listBoxName.SelectedIndices.Add(i);
+                }
+            }
+        }
+        #endregion
+        #region Method: clear all text boxes
+        public void ClearTextBoxes()
+        {
+            textBoxSearchTargetA.Clear();
+            textBoxSearchTargetB.Clear();
+            textBoxTimeSelectionA.Clear();
+            textBoxTimeSelectionB.Clear();
+            textBoxTimeInsertionA.Clear();
+            textBoxTimeInsertionB.Clear();
+            textBoxTimeIterativeA.Clear();
+            textBoxTimeIterativeB.Clear();
+            textBoxTimeInsertionA.Clear();
+            textBoxTimeInsertionB.Clear();
         }
         #endregion
 
@@ -150,29 +166,25 @@ namespace Satellite_Data_Processing_Project
         // Implements a selection method for sorting the target double linked list. Returns true if the sort was executed.
         private bool SelectionSort(LinkedList<double> linkedListName)
         {
-            if (NumberOfNodes(linkedListName) > 0)
+            int min = 0;
+            int max = NumberOfNodes(linkedListName);
+            for (int i = 0; i < max; i++)
             {
-                int min = 0;
-                int max = NumberOfNodes(linkedListName);
-                for (int i = 0; i < max; i++)
+                min = i;
+                for (int j = i + 1; j < max; j++)
                 {
-                    min = i;
-                    for (int j = i + 1; j < max; j++)
+                    if (linkedListName.ElementAt(j).CompareTo(linkedListName.ElementAt(min)) < 0)
                     {
-                        if (linkedListName.ElementAt(j).CompareTo(linkedListName.ElementAt(min)) < 0)
-                        {
-                            min = j;
-                        }
+                        min = j;
                     }
-                    LinkedListNode<double> currentMin = linkedListName.Find(linkedListName.ElementAt(min));
-                    LinkedListNode<double> currentI = linkedListName.Find(linkedListName.ElementAt(i));
-                    var temp = currentMin.Value;
-                    currentMin.Value = currentI.Value;
-                    currentI.Value = temp;
                 }
-                return true;
+                LinkedListNode<double> currentMin = linkedListName.Find(linkedListName.ElementAt(min));
+                LinkedListNode<double> currentI = linkedListName.Find(linkedListName.ElementAt(i));
+                var temp = currentMin.Value;
+                currentMin.Value = currentI.Value;
+                currentI.Value = temp;
             }
-            else return false;
+            return true;
         }
         #endregion
         #region Button: selection sort A & B
@@ -205,25 +217,21 @@ namespace Satellite_Data_Processing_Project
         #region Method: insertion sort
         private bool InsertionSort(LinkedList<double> linkedListName)
         {
-            if (NumberOfNodes(linkedListName) > 0)
+            int max = NumberOfNodes(linkedListName);
+            for (int i = 0; i < max - 1; i++)
             {
-                int max = NumberOfNodes(linkedListName);
-                for (int i = 0; i < max - 1; i++)
+                for (int j = i + 1; j > 0; j--)
                 {
-                    for (int j = i + 1; j > 0; j--)
+                    if (linkedListName.ElementAt(j - 1) > linkedListName.ElementAt(j))
                     {
-                        if (linkedListName.ElementAt(j - 1) > linkedListName.ElementAt(j))
-                        {
-                            LinkedListNode<double> current = linkedListName.Find(linkedListName.ElementAt(j));
-                            var temp = current.Previous.Value;
-                            current.Previous.Value = current.Value;
-                            current.Value = temp;
-                        }
+                        LinkedListNode<double> current = linkedListName.Find(linkedListName.ElementAt(j));
+                        var temp = current.Previous.Value;
+                        current.Previous.Value = current.Value;
+                        current.Value = temp;
                     }
                 }
-                return true;
             }
-            else return false;
+            return true;
         }
         #endregion
         #region Button: insertion sort A & B
@@ -255,54 +263,86 @@ namespace Satellite_Data_Processing_Project
         #region Method: binary search iterative
         private int BinarySearchIterative(LinkedList<double> linkedListName, double searchValue, int min, int max)
         {
-            if (CheckSorted(linkedListName))
+            while (min <= max - 1)
             {
-                while (min <= max - 1)
+                int mid = (min + max) / 2;
+                if (searchValue == linkedListName.ElementAt(mid))
                 {
-                    int mid = (min + max) / 2;
-                    if (searchValue == linkedListName.ElementAt(mid))
-                    {
-                        return ++mid;
-                    }
-                    else if (searchValue < linkedListName.ElementAt(mid))
-                    {
-                        max = mid - 1;
-                    }
-                    else
-                    {
-                        min = mid + 1;
-                    }
+                    return ++mid;
                 }
-                return min;
+                else if (searchValue < linkedListName.ElementAt(mid))
+                {
+                    max = mid - 1;
+                }
+                else
+                {
+                    min = mid + 1;
+                }
             }
-            else
-            {
-                MessageBox.Show("List not sorted.");
-                return -1;
-            }
-            
+            return min;
         }
         #endregion
         #region Button: iterative search A & B
 
         private void ButtonIterativeSearchA_Click(object sender, EventArgs e)
         {
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
-            int index = BinarySearchIterative(dataSensorA, int.Parse(textBoxSearchTargetA.Text), 0, NumberOfNodes(dataSensorA));
-            stopwatch.Stop();
-            HighlightSearchIndex(index, dataSensorA, listBoxA);
-            textBoxTimeIterativeA.Text = String.Format("{0} ticks", stopwatch.Elapsed.Ticks);
+            try
+            {
+                if (!string.IsNullOrEmpty(textBoxSearchTargetA.Text))
+                {
+                    if (SelectionSort(dataSensorA))
+                    {
+                        DisplayAll();
+                        Stopwatch stopwatch = new Stopwatch();
+                        stopwatch.Start();
+                        int index = BinarySearchIterative(dataSensorA, int.Parse(textBoxSearchTargetA.Text), 0, NumberOfNodes(dataSensorA));
+                        stopwatch.Stop();
+                        HighlightSearchIndex(index, dataSensorA, listBoxA);
+                        textBoxTimeIterativeA.Text = String.Format("{0} ticks", stopwatch.Elapsed.Ticks);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Error: please enter a valid value before searching.");
+                }
+            }
+            catch (Exception ex)
+            {
+                if (ex is FormatException || ex is OverflowException)
+                {
+                    MessageBox.Show("Error: please enter a valid value before searching.");
+                }
+            }
         }
         private void ButtonIterativeSearchB_Click(object sender, EventArgs e)
         {
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
-            int index = BinarySearchIterative(dataSensorB, int.Parse(textBoxSearchTargetB.Text), 0, NumberOfNodes(dataSensorB));
-            stopwatch.Stop();
-            HighlightSearchIndex(index, dataSensorB, listBoxB);
-            textBoxTimeIterativeB.Text = String.Format("{0} ticks", stopwatch.Elapsed.Ticks);
-
+            try
+            {
+                if (!string.IsNullOrEmpty(textBoxSearchTargetB.Text))
+                {
+                    if (SelectionSort(dataSensorB))
+                    {
+                        DisplayAll();
+                        Stopwatch stopwatch = new Stopwatch();
+                        stopwatch.Start();
+                        int index = BinarySearchIterative(dataSensorB, int.Parse(textBoxSearchTargetB.Text), 0, NumberOfNodes(dataSensorB));
+                        stopwatch.Stop();
+                        HighlightSearchIndex(index, dataSensorB, listBoxB);
+                        textBoxTimeIterativeB.Text = String.Format("{0} ticks", stopwatch.Elapsed.Ticks);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Error: please enter the value you wish to search.");
+                }
+            }
+            catch (Exception ex)
+            {
+                if (ex is FormatException || ex is OverflowException)
+                {
+                    MessageBox.Show("Error: please enter a valid value before searching.");
+                }
+            }
         }
         #endregion
 
@@ -312,13 +352,13 @@ namespace Satellite_Data_Processing_Project
             if (min <= max - 1)
             {
                 int mid = (min + max) / 2;
-                if(searchValue == linkedListName.ElementAt(mid))
+                if (searchValue == linkedListName.ElementAt(mid))
                 {
                     return mid;
                 }
-                else if(searchValue < linkedListName.ElementAt(mid))
+                else if (searchValue < linkedListName.ElementAt(mid))
                 {
-                    return BinarySearchRecursive(linkedListName, searchValue, min, max-1);
+                    return BinarySearchRecursive(linkedListName, searchValue, min, mid - 1);
                 }
                 else
                 {
@@ -331,40 +371,63 @@ namespace Satellite_Data_Processing_Project
         #region Button: binary search recursive A & B
         private void ButtonRecursiveSearchA_Click(object sender, EventArgs e)
         {
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
-            int index = BinarySearchRecursive(dataSensorA, int.Parse(textBoxSearchTargetA.Text), 0, NumberOfNodes(dataSensorA));
-            stopwatch.Stop();
-            HighlightSearchIndex(index, dataSensorA, listBoxA);
-            textBoxTimeRecursiveA.Text = String.Format("{0:0.00} ms", stopwatch.Elapsed.TotalMilliseconds);
-        }
-
-        private void ButtonRecursiveSearchB_Click(object sender, EventArgs e)
-        {
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
-            int index = BinarySearchRecursive(dataSensorB, int.Parse(textBoxSearchTargetB.Text), 0, NumberOfNodes(dataSensorB));
-            stopwatch.Stop();
-            HighlightSearchIndex(index, dataSensorB, listBoxB);
-            textBoxTimeRecursiveB.Text = String.Format("{0:0.00} ms", stopwatch.Elapsed.TotalMilliseconds);
-        }
-        #endregion
-
-        #region Method: check lists sorted
-        public bool CheckSorted(LinkedList<double> linkedListName)
-        {
-            foreach (var i in linkedListName)
+            try
             {
-                if (i < i + 1)
+                if (InsertionSort(dataSensorA))
                 {
-
+                    if (!string.IsNullOrEmpty(textBoxSearchTargetA.Text))
+                    {
+                        DisplayAll();
+                        Stopwatch stopwatch = new Stopwatch();
+                        stopwatch.Start();
+                        int index = BinarySearchRecursive(dataSensorA, int.Parse(textBoxSearchTargetA.Text), 0, NumberOfNodes(dataSensorA));
+                        stopwatch.Stop();
+                        HighlightSearchIndex(index, dataSensorA, listBoxA);
+                        textBoxTimeRecursiveA.Text = String.Format("{0:0.00} ms", stopwatch.Elapsed.TotalMilliseconds);
+                    }
                 }
                 else
                 {
-                    return false;
+                    MessageBox.Show("Error: please enter the value you wish to search.");
                 }
             }
-            return true;
+            catch (Exception ex)
+            {
+                if (ex is FormatException || ex is OverflowException)
+                {
+                    MessageBox.Show("Error: please enter a valid value before searching.");
+                }
+            }
+        }
+        private void ButtonRecursiveSearchB_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (InsertionSort(dataSensorB))
+                {
+                    if (!string.IsNullOrEmpty(textBoxSearchTargetB.Text))
+                    {
+                        DisplayAll();
+                        Stopwatch stopwatch = new Stopwatch();
+                        stopwatch.Start();
+                        int index = BinarySearchRecursive(dataSensorB, int.Parse(textBoxSearchTargetB.Text), 0, NumberOfNodes(dataSensorB));
+                        stopwatch.Stop();
+                        HighlightSearchIndex(index, dataSensorB, listBoxB);
+                        textBoxTimeRecursiveB.Text = String.Format("{0:0.00} ms", stopwatch.Elapsed.TotalMilliseconds);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Error: please enter the value you wish to search.");
+                }
+            }
+            catch (Exception ex)
+            {
+                if (ex is FormatException || ex is OverflowException)
+                {
+                    MessageBox.Show("Error: please enter a valid value before searching.");
+                }
+            }
         }
         #endregion
     }

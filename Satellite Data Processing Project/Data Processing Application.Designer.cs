@@ -277,6 +277,7 @@
             this.buttonRecursiveSearchA.TabIndex = 7;
             this.buttonRecursiveSearchA.Text = "Search";
             this.buttonRecursiveSearchA.UseVisualStyleBackColor = true;
+            this.buttonRecursiveSearchA.Click += new System.EventHandler(this.ButtonRecursiveSearchA_Click);
             // 
             // textBoxTimeRecursiveA
             // 
@@ -511,6 +512,7 @@
             this.buttonRecursiveSearchB.TabIndex = 21;
             this.buttonRecursiveSearchB.Text = "Search";
             this.buttonRecursiveSearchB.UseVisualStyleBackColor = true;
+            this.buttonRecursiveSearchB.Click += new System.EventHandler(this.ButtonRecursiveSearchB_Click);
             // 
             // label10
             // 

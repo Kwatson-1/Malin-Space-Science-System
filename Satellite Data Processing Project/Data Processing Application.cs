@@ -121,10 +121,7 @@ namespace Satellite_Data_Processing_Project
         #region Method: form load
         private void ApplicationForm_Load(object sender, EventArgs e)
         {
-            if (Environment.Is64BitOperatingSystem)
-            {
-                Console.WriteLine("yes 64 bit");
-            }
+
         }
         #endregion
         #region Method: search highlight

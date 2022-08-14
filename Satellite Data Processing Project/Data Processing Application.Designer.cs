@@ -71,10 +71,14 @@
             this.textBoxTimeRecursiveB = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSigma)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMu)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -111,6 +115,8 @@
             this.numericUpDownSigma.Name = "numericUpDownSigma";
             this.numericUpDownSigma.Size = new System.Drawing.Size(80, 20);
             this.numericUpDownSigma.TabIndex = 2;
+            this.numericUpDownSigma.Tag = "";
+            this.toolTip1.SetToolTip(this.numericUpDownSigma, "Controls the standard deviation of new data generated");
             this.numericUpDownSigma.Value = new decimal(new int[] {
             10,
             0,
@@ -133,6 +139,8 @@
             this.numericUpDownMu.Name = "numericUpDownMu";
             this.numericUpDownMu.Size = new System.Drawing.Size(80, 20);
             this.numericUpDownMu.TabIndex = 3;
+            this.numericUpDownMu.Tag = "";
+            this.toolTip1.SetToolTip(this.numericUpDownMu, "Controls the mean of new data generated");
             this.numericUpDownMu.Value = new decimal(new int[] {
             50,
             0,
@@ -149,8 +157,11 @@
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(269, 86);
             this.listView1.Name = "listView1";
+            this.listView1.ShowItemToolTips = true;
             this.listView1.Size = new System.Drawing.Size(169, 384);
             this.listView1.TabIndex = 4;
+            this.listView1.Tag = "";
+            this.toolTip1.SetToolTip(this.listView1, "Raw data from sensors A & B is displayed here");
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
             // 
@@ -172,6 +183,8 @@
             this.listBoxA.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.listBoxA.Size = new System.Drawing.Size(120, 407);
             this.listBoxA.TabIndex = 5;
+            this.listBoxA.Tag = "";
+            this.toolTip1.SetToolTip(this.listBoxA, "Data from sensor A will be displayed here");
             // 
             // buttonLoadData
             // 
@@ -179,6 +192,7 @@
             this.buttonLoadData.Name = "buttonLoadData";
             this.buttonLoadData.Size = new System.Drawing.Size(169, 23);
             this.buttonLoadData.TabIndex = 7;
+            this.buttonLoadData.Tag = "Generates new sensor data using the entered sigma and mu values";
             this.buttonLoadData.Text = "Load Sensor Data";
             this.buttonLoadData.UseVisualStyleBackColor = true;
             this.buttonLoadData.Click += new System.EventHandler(this.ButtonLoadData_Click);
@@ -215,6 +229,8 @@
             this.buttonInsertionSortA.Size = new System.Drawing.Size(118, 23);
             this.buttonInsertionSortA.TabIndex = 13;
             this.buttonInsertionSortA.Text = "Sort";
+            this.toolTip1.SetToolTip(this.buttonInsertionSortA, "Click to sort sensor A data using an insertion sort and display it in the corresp" +
+        "onding list box");
             this.buttonInsertionSortA.UseVisualStyleBackColor = true;
             this.buttonInsertionSortA.Click += new System.EventHandler(this.buttonInsertionSortA_Click);
             // 
@@ -226,6 +242,8 @@
             this.textBoxTimeInsertionA.ReadOnly = true;
             this.textBoxTimeInsertionA.Size = new System.Drawing.Size(118, 20);
             this.textBoxTimeInsertionA.TabIndex = 12;
+            this.toolTip1.SetToolTip(this.textBoxTimeInsertionA, "The amount of time taken to conduct the insertion sort is displayed here in milli" +
+        "seconds");
             // 
             // label8
             // 
@@ -244,7 +262,10 @@
             this.buttonSelectionSortA.Name = "buttonSelectionSortA";
             this.buttonSelectionSortA.Size = new System.Drawing.Size(118, 23);
             this.buttonSelectionSortA.TabIndex = 10;
+            this.buttonSelectionSortA.Tag = "";
             this.buttonSelectionSortA.Text = "Sort";
+            this.toolTip1.SetToolTip(this.buttonSelectionSortA, "Click to sort sensor A data selectively and display it in the corresponding list " +
+        "box");
             this.buttonSelectionSortA.UseVisualStyleBackColor = true;
             this.buttonSelectionSortA.Click += new System.EventHandler(this.ButtonSelectionSortA_Click);
             // 
@@ -257,6 +278,8 @@
             this.textBoxTimeSelectionA.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.textBoxTimeSelectionA.Size = new System.Drawing.Size(118, 20);
             this.textBoxTimeSelectionA.TabIndex = 9;
+            this.toolTip1.SetToolTip(this.textBoxTimeSelectionA, "The amount of time taken to conduct the selection sort is displayed here in milli" +
+        "seconds");
             // 
             // label7
             // 
@@ -275,7 +298,10 @@
             this.buttonRecursiveSearchA.Name = "buttonRecursiveSearchA";
             this.buttonRecursiveSearchA.Size = new System.Drawing.Size(118, 23);
             this.buttonRecursiveSearchA.TabIndex = 7;
+            this.buttonRecursiveSearchA.Tag = "";
             this.buttonRecursiveSearchA.Text = "Search";
+            this.toolTip1.SetToolTip(this.buttonRecursiveSearchA, "Click to search sensor A data recursively for the values closest to the search ta" +
+        "rget");
             this.buttonRecursiveSearchA.UseVisualStyleBackColor = true;
             this.buttonRecursiveSearchA.Click += new System.EventHandler(this.ButtonRecursiveSearchA_Click);
             // 
@@ -287,6 +313,7 @@
             this.textBoxTimeRecursiveA.ReadOnly = true;
             this.textBoxTimeRecursiveA.Size = new System.Drawing.Size(118, 20);
             this.textBoxTimeRecursiveA.TabIndex = 6;
+            this.toolTip1.SetToolTip(this.textBoxTimeRecursiveA, "The number of ticks taken to conduct the recursive search is displayed here");
             // 
             // label6
             // 
@@ -305,7 +332,10 @@
             this.buttonIterativeSearchA.Name = "buttonIterativeSearchA";
             this.buttonIterativeSearchA.Size = new System.Drawing.Size(118, 23);
             this.buttonIterativeSearchA.TabIndex = 4;
+            this.buttonIterativeSearchA.Tag = "";
             this.buttonIterativeSearchA.Text = "Search";
+            this.toolTip1.SetToolTip(this.buttonIterativeSearchA, "Click to search sensor A data iteratively for the values closest to the search ta" +
+        "rget");
             this.buttonIterativeSearchA.UseVisualStyleBackColor = true;
             this.buttonIterativeSearchA.Click += new System.EventHandler(this.ButtonIterativeSearchA_Click);
             // 
@@ -317,6 +347,7 @@
             this.textBoxTimeIterativeA.ReadOnly = true;
             this.textBoxTimeIterativeA.Size = new System.Drawing.Size(118, 20);
             this.textBoxTimeIterativeA.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.textBoxTimeIterativeA, "The number of ticks taken to conduct the binary search is displayed here");
             // 
             // label5
             // 
@@ -346,6 +377,8 @@
             this.textBoxSearchTargetA.Name = "textBoxSearchTargetA";
             this.textBoxSearchTargetA.Size = new System.Drawing.Size(119, 20);
             this.textBoxSearchTargetA.TabIndex = 0;
+            this.textBoxSearchTargetA.Tag = "";
+            this.toolTip1.SetToolTip(this.textBoxSearchTargetA, "Enter the sensor A data you wish to search for here");
             this.textBoxSearchTargetA.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxSearchTargetA_KeyPress);
             // 
             // groupBox2
@@ -384,6 +417,7 @@
             this.listBoxB.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.listBoxB.Size = new System.Drawing.Size(120, 409);
             this.listBoxB.TabIndex = 14;
+            this.listBoxB.Tag = "Data from sensor A will be displayed here";
             // 
             // buttonInsertionSortB
             // 
@@ -393,6 +427,8 @@
             this.buttonInsertionSortB.Size = new System.Drawing.Size(118, 23);
             this.buttonInsertionSortB.TabIndex = 27;
             this.buttonInsertionSortB.Text = "Sort";
+            this.toolTip1.SetToolTip(this.buttonInsertionSortB, "Click to sort sensor B data using an insertion sort and display it in the corresp" +
+        "onding list box");
             this.buttonInsertionSortB.UseVisualStyleBackColor = true;
             this.buttonInsertionSortB.Click += new System.EventHandler(this.buttonInsertionSortB_Click);
             // 
@@ -406,6 +442,8 @@
             this.textBoxTimeInsertionB.Size = new System.Drawing.Size(118, 20);
             this.textBoxTimeInsertionB.TabIndex = 26;
             this.textBoxTimeInsertionB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.toolTip1.SetToolTip(this.textBoxTimeInsertionB, "The amount of time taken to conduct the insertion sort is displayed here in milli" +
+        "seconds");
             // 
             // textBoxSearchTargetB
             // 
@@ -415,7 +453,9 @@
             this.textBoxSearchTargetB.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.textBoxSearchTargetB.Size = new System.Drawing.Size(119, 20);
             this.textBoxSearchTargetB.TabIndex = 14;
+            this.textBoxSearchTargetB.Tag = "";
             this.textBoxSearchTargetB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.toolTip1.SetToolTip(this.textBoxSearchTargetB, "Enter the sensor B data you wish to search for here");
             this.textBoxSearchTargetB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxSearchTargetB_KeyPress);
             // 
             // label4
@@ -446,7 +486,10 @@
             this.buttonSelectionSortB.Name = "buttonSelectionSortB";
             this.buttonSelectionSortB.Size = new System.Drawing.Size(118, 23);
             this.buttonSelectionSortB.TabIndex = 24;
+            this.buttonSelectionSortB.Tag = "";
             this.buttonSelectionSortB.Text = "Sort";
+            this.toolTip1.SetToolTip(this.buttonSelectionSortB, "Click to sort sensor B data selectively and display it in the corresponding list " +
+        "box");
             this.buttonSelectionSortB.UseVisualStyleBackColor = true;
             this.buttonSelectionSortB.Click += new System.EventHandler(this.buttonSelectionSortB_Click);
             // 
@@ -470,6 +513,8 @@
             this.textBoxTimeSelectionB.Size = new System.Drawing.Size(117, 20);
             this.textBoxTimeSelectionB.TabIndex = 23;
             this.textBoxTimeSelectionB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.toolTip1.SetToolTip(this.textBoxTimeSelectionB, "The amount of time taken to conduct the selection sort is displayed here in milli" +
+        "seconds");
             // 
             // textBoxTimeIterativeB
             // 
@@ -481,6 +526,7 @@
             this.textBoxTimeIterativeB.Size = new System.Drawing.Size(118, 20);
             this.textBoxTimeIterativeB.TabIndex = 17;
             this.textBoxTimeIterativeB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.toolTip1.SetToolTip(this.textBoxTimeIterativeB, "The number of ticks taken to conduct the binary search is displayed here");
             // 
             // label9
             // 
@@ -499,7 +545,10 @@
             this.buttonIterativeSearchB.Name = "buttonIterativeSearchB";
             this.buttonIterativeSearchB.Size = new System.Drawing.Size(118, 23);
             this.buttonIterativeSearchB.TabIndex = 18;
+            this.buttonIterativeSearchB.Tag = "";
             this.buttonIterativeSearchB.Text = "Search";
+            this.toolTip1.SetToolTip(this.buttonIterativeSearchB, "Click to search sensor B data iteratively for the values closest to the search ta" +
+        "rget");
             this.buttonIterativeSearchB.UseVisualStyleBackColor = true;
             this.buttonIterativeSearchB.Click += new System.EventHandler(this.ButtonIterativeSearchB_Click);
             // 
@@ -510,7 +559,10 @@
             this.buttonRecursiveSearchB.Name = "buttonRecursiveSearchB";
             this.buttonRecursiveSearchB.Size = new System.Drawing.Size(118, 23);
             this.buttonRecursiveSearchB.TabIndex = 21;
+            this.buttonRecursiveSearchB.Tag = "";
             this.buttonRecursiveSearchB.Text = "Search";
+            this.toolTip1.SetToolTip(this.buttonRecursiveSearchB, "Click to search sensor B data recursively for the values closest to the search ta" +
+        "rget");
             this.buttonRecursiveSearchB.UseVisualStyleBackColor = true;
             this.buttonRecursiveSearchB.Click += new System.EventHandler(this.ButtonRecursiveSearchB_Click);
             // 
@@ -534,17 +586,34 @@
             this.textBoxTimeRecursiveB.Size = new System.Drawing.Size(118, 20);
             this.textBoxTimeRecursiveB.TabIndex = 20;
             this.textBoxTimeRecursiveB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.toolTip1.SetToolTip(this.textBoxTimeRecursiveB, "The number of ticks taken to conduct the recursive search is displayed here");
             // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 478);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(707, 22);
+            this.statusStrip1.TabIndex = 14;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 17);
+            // 
             // ApplicationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(707, 484);
+            this.ClientSize = new System.Drawing.Size(707, 500);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.buttonLoadData);
             this.Controls.Add(this.listBoxA);
             this.Controls.Add(this.listView1);
@@ -563,6 +632,8 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -612,6 +683,9 @@
         private System.Windows.Forms.TextBox textBoxTimeRecursiveB;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
     }
 }
 

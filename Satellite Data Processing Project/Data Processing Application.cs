@@ -11,9 +11,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Galileo;
 using System.Diagnostics;
+
 // Kyle Watson - SMTAFE (30048165)
 // Project start: 24/08/2022
 // Development of an application that will sort and search complex data sets recorded during satellite operation
+
 namespace Satellite_Data_Processing_Project
 {
     public partial class ApplicationForm : Form
@@ -55,6 +57,7 @@ namespace Satellite_Data_Processing_Project
         private void ButtonLoadData_Click(object sender, EventArgs e)
         {
             LoadData();
+            ClearTextBoxes();
         }
         #endregion
 
@@ -118,7 +121,10 @@ namespace Satellite_Data_Processing_Project
         #region Method: form load
         private void ApplicationForm_Load(object sender, EventArgs e)
         {
-
+            if (Environment.Is64BitOperatingSystem)
+            {
+                Console.WriteLine("yes 64 bit");
+            }
         }
         #endregion
         #region Method: search highlight
@@ -191,26 +197,30 @@ namespace Satellite_Data_Processing_Project
         // Start time, execute method, stop time, display data, fill time box
         private void ButtonSelectionSortA_Click(object sender, EventArgs e)
         {
+            ClearTextBoxes();
             LoadData();
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start(); ;
             SelectionSort(dataSensorA);
             stopwatch.Stop();
-            ShowAllSensorData();
+            //ShowAllSensorData();
             DisplayListBoxData(dataSensorA, listBoxA);
             textBoxTimeSelectionA.Text = String.Format("{0:0.##} ms", stopwatch.Elapsed.TotalMilliseconds);
+            toolStripStatusLabel1.Text = "Data was successfully sorted using a selection sort";
         }
 
         private void buttonSelectionSortB_Click(object sender, EventArgs e)
         {
+            ClearTextBoxes();
             LoadData();
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
             SelectionSort(dataSensorB);
             stopwatch.Stop();
-            ShowAllSensorData();
+            //ShowAllSensorData();
             DisplayListBoxData(dataSensorB, listBoxB);
             textBoxTimeSelectionB.Text = String.Format("{0:0.##} ms", stopwatch.Elapsed.TotalMilliseconds);
+            toolStripStatusLabel1.Text = "Data was successfully sorted using a selection sort";
         }
         #endregion
 
@@ -237,26 +247,30 @@ namespace Satellite_Data_Processing_Project
         #region Button: insertion sort A & B
         private void buttonInsertionSortA_Click(object sender, EventArgs e)
         {
+            ClearTextBoxes();
             LoadData();
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
             InsertionSort(dataSensorA);
             stopwatch.Stop();
-            ShowAllSensorData();
+            //ShowAllSensorData();
             DisplayListBoxData(dataSensorA, listBoxA);
             textBoxTimeInsertionA.Text = String.Format("{0:0.00} ms", stopwatch.Elapsed.TotalMilliseconds);
+            toolStripStatusLabel1.Text = "Data was successfully sorted using an insertion sort";
         }
 
         private void buttonInsertionSortB_Click(object sender, EventArgs e)
         {
+            ClearTextBoxes();
             LoadData();
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
             InsertionSort(dataSensorB);
             stopwatch.Stop();
-            ShowAllSensorData();
+            //ShowAllSensorData();
             DisplayListBoxData(dataSensorB, listBoxB);
             textBoxTimeInsertionB.Text = String.Format("{0:0.00} ms", stopwatch.Elapsed.TotalMilliseconds);
+            toolStripStatusLabel1.Text = "Data was successfully sorted using an insertion sort";
         }
         #endregion
 
@@ -299,6 +313,7 @@ namespace Satellite_Data_Processing_Project
                         stopwatch.Stop();
                         HighlightSearchIndex(index, dataSensorA, listBoxA);
                         textBoxTimeIterativeA.Text = String.Format("{0} ticks", stopwatch.Elapsed.Ticks);
+                        toolStripStatusLabel1.Text = String.Format("Iterative search returned index {0} as the value closest to the search target", index);
                     }
                 }
                 else
@@ -329,6 +344,7 @@ namespace Satellite_Data_Processing_Project
                         stopwatch.Stop();
                         HighlightSearchIndex(index, dataSensorB, listBoxB);
                         textBoxTimeIterativeB.Text = String.Format("{0} ticks", stopwatch.Elapsed.Ticks);
+                        toolStripStatusLabel1.Text = String.Format("Iterative search returned index {0} as the value closest to the search target", index);
                     }
                 }
                 else
@@ -363,6 +379,7 @@ namespace Satellite_Data_Processing_Project
                 else
                 {
                     return BinarySearchRecursive(linkedListName, searchValue, mid + 1, max);
+
                 }
             }
             return min;
@@ -384,6 +401,7 @@ namespace Satellite_Data_Processing_Project
                         stopwatch.Stop();
                         HighlightSearchIndex(index, dataSensorA, listBoxA);
                         textBoxTimeRecursiveA.Text = String.Format("{0:0.00} ms", stopwatch.Elapsed.TotalMilliseconds);
+                        toolStripStatusLabel1.Text = String.Format("Recursive search returned index {0} as the value closest to the search target", index);
                     }
                 }
                 else
@@ -414,6 +432,7 @@ namespace Satellite_Data_Processing_Project
                         stopwatch.Stop();
                         HighlightSearchIndex(index, dataSensorB, listBoxB);
                         textBoxTimeRecursiveB.Text = String.Format("{0:0.00} ms", stopwatch.Elapsed.TotalMilliseconds);
+                        toolStripStatusLabel1.Text = String.Format("Recursive search returned index {0} as the value closest to the search target", index);
                     }
                 }
                 else
@@ -430,5 +449,7 @@ namespace Satellite_Data_Processing_Project
             }
         }
         #endregion
+
+
     }
 }

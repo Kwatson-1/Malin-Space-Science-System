@@ -9,6 +9,14 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+/* 4.2	Copy the Galileo.DLL file into the root directory of your solution folder and add the appropriate 
+ * reference in the solution explorer. Create a method called “LoadData” which will populate both
+ * LinkedLists. Declare an instance of the Galileo library in the method and create the appropriate loop 
+ * construct to populate the two LinkedList; the data from Sensor A will populate the first LinkedList, 
+ * while the data from Sensor B will populate the second LinkedList. The LinkedList size will be 
+ * hardcoded inside the method and must be equal to 400. The input parameters are empty, and the 
+ * return type is void.
+ */
 using Galileo;
 using System.Diagnostics;
 
@@ -24,7 +32,11 @@ namespace Satellite_Data_Processing_Project
         {
             InitializeComponent();
         }
-
+        /* 4.1	Create two data structures using the LinkedList<T> class from the C# Systems.Collections.Generic
+         * namespace. The data must be of type “double”; you are not permitted to use any additional classes, 
+         * nodes, pointers or data structures (array, list, etc) in the implementation of this application. The two 
+         * LinkedLists of type double are to be declared as global within the “public partial class”.
+         */
         #region Global variables
         private static LinkedList<double> dataSensorA = new LinkedList<double>();
         private static LinkedList<double> dataSensorB = new LinkedList<double>();
@@ -37,9 +49,6 @@ namespace Satellite_Data_Processing_Project
         // Method then calls display methods to populate the listview and 2 listboxes.
         private void LoadData()
         {
-            dataSensorA.Clear();
-            dataSensorB.Clear();
-
             int max = 400;
             Galileo.ReadData var = new Galileo.ReadData();
             for (int i = 0; i < max; i++)
@@ -47,20 +56,29 @@ namespace Satellite_Data_Processing_Project
                 dataSensorA.AddLast(var.SensorA((double)numericUpDownMu.Value, (double)numericUpDownSigma.Value));
                 dataSensorB.AddLast(var.SensorB((double)numericUpDownMu.Value, (double)numericUpDownSigma.Value));
             }
-            ShowAllSensorData();
-            DisplayListBoxData(dataSensorA, listBoxA);
-            DisplayListBoxData(dataSensorB, listBoxB);
         }
         #endregion
+        /* 4.4	Create a button and associated click method that will call the LoadData and ShowAllSensorData 
+         * methods. The input parameters are empty, and the return type is void.
+         */
         #region Button: load data
         // Loads/generates sensor data into the list boxes and list view when pressed
         private void ButtonLoadData_Click(object sender, EventArgs e)
         {
+            dataSensorA.Clear();
+            dataSensorB.Clear();
             LoadData();
+            ShowAllSensorData();
+            DisplayListBoxData(dataSensorA, listBoxA);
+            DisplayListBoxData(dataSensorB, listBoxB);
             ClearTextBoxes();
+            toolStripStatusLabel1.Text = "Sensors' data cleared, new data generated.";
         }
         #endregion
-
+        /* 4.3	Create a custom method called “ShowAllSensorData” which will display both LinkedLists in a 
+         * ListView. Add column titles “Sensor A” and “Sensor B” to the ListView. The input parameters are
+         * empty, and the return type is void.
+         */
         #region Display: list view display 
         // Method for displaying the linked list data in the list view - does not fill list boxes.
         private void ShowAllSensorData()
@@ -74,6 +92,10 @@ namespace Satellite_Data_Processing_Project
             }
         }
         #endregion
+        /* 4.6	Create a method called “DisplayListboxData” that will display the content of a LinkedList inside the 
+         * appropriate ListBox. The method signature will have two input parameters; a LinkedList, and the 
+         * ListBox name.  The calling code argument is the linkedlist name and the listbox name.
+         */
         #region Display: populate list box
         // Method populates the specified listbox with data from the specified linked list using a foreach loop.
         private void DisplayListBoxData(LinkedList<double> linkedListName, ListBox listBoxName)
@@ -86,6 +108,7 @@ namespace Satellite_Data_Processing_Project
         }
         #endregion
         #region Display: call all display methods
+        // Method which when called will fill both the listview and 2 list boxes with data from the double linked lists.
         public void DisplayAll()
         {
             ShowAllSensorData();
@@ -93,14 +116,19 @@ namespace Satellite_Data_Processing_Project
             DisplayListBoxData(dataSensorB, listBoxB);
         }
         #endregion
-
+        /* 4.5	Create a method called “NumberOfNodes” that will return an integer which is the number of 
+         * nodes(elements) in a LinkedList. The method signature will have an input parameter of type 
+         * LinkedList, and the calling code argument is the linkedlist name.
+         */
         #region Method: count nodes
-        // Calls the LinkedList.Count method and returns the value as an integer
-        private int NumberOfNodes(LinkedList<double> LinkedList)
+        // Calls the LinkedList.Count method and returns the value as an integer - counts the number of nodes in the target linked list parameter
+        private int NumberOfNodes(LinkedList<double> linkedList)
         {
-            return LinkedList.Count;
+            return linkedList.Count;
         }
         #endregion
+        /* 4.14	Add two textboxes for the search value; one for each sensor, ensure only numeric values can be entered
+         */
         #region Method: handle user textBox input
         // If the key press is not a control character and not a digit and not a decimal point returns true otherwise returns false.
         private Boolean ValidateTextBox(KeyPressEventArgs keyPress)
@@ -164,7 +192,10 @@ namespace Satellite_Data_Processing_Project
             textBoxTimeInsertionB.Clear();
         }
         #endregion
-
+        /* 4.7	Create a method called “SelectionSort” which has a single input parameter of type LinkedList, while 
+         * the calling code argument is the linkedlist name. The method code must follow the pseudo code 
+         * supplied below in the Appendix. The return type is Boolean.
+         */
         #region Method: selection sort
         // Implements a selection method for sorting the target double linked list. Returns true if the sort was executed.
         private bool SelectionSort(LinkedList<double> linkedListName)
@@ -190,37 +221,11 @@ namespace Satellite_Data_Processing_Project
             return true;
         }
         #endregion
-        #region Button: selection sort A & B
-        // Start time, execute method, stop time, display data, fill time box
-        private void ButtonSelectionSortA_Click(object sender, EventArgs e)
-        {
-            ClearTextBoxes();
-            LoadData();
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start(); ;
-            SelectionSort(dataSensorA);
-            stopwatch.Stop();
-            //ShowAllSensorData();
-            DisplayListBoxData(dataSensorA, listBoxA);
-            textBoxTimeSelectionA.Text = String.Format("{0:0.##} ms", stopwatch.Elapsed.TotalMilliseconds);
-            toolStripStatusLabel1.Text = "Data was successfully sorted using a selection sort";
-        }
 
-        private void buttonSelectionSortB_Click(object sender, EventArgs e)
-        {
-            ClearTextBoxes();
-            LoadData();
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
-            SelectionSort(dataSensorB);
-            stopwatch.Stop();
-            //ShowAllSensorData();
-            DisplayListBoxData(dataSensorB, listBoxB);
-            textBoxTimeSelectionB.Text = String.Format("{0:0.##} ms", stopwatch.Elapsed.TotalMilliseconds);
-            toolStripStatusLabel1.Text = "Data was successfully sorted using a selection sort";
-        }
-        #endregion
-
+        /* 4.8	Create a method called “InsertionSort” which has a single parameter of type LinkedList, while the
+         * calling code argument is the linkedlist name. The method code must follow the pseudo code supplied 
+         * below in the Appendix. The return type is Boolean.
+         */
         #region Method: insertion sort
         private bool InsertionSort(LinkedList<double> linkedListName)
         {
@@ -241,36 +246,13 @@ namespace Satellite_Data_Processing_Project
             return true;
         }
         #endregion
-        #region Button: insertion sort A & B
-        private void buttonInsertionSortA_Click(object sender, EventArgs e)
-        {
-            ClearTextBoxes();
-            LoadData();
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
-            InsertionSort(dataSensorA);
-            stopwatch.Stop();
-            //ShowAllSensorData();
-            DisplayListBoxData(dataSensorA, listBoxA);
-            textBoxTimeInsertionA.Text = String.Format("{0:0.00} ms", stopwatch.Elapsed.TotalMilliseconds);
-            toolStripStatusLabel1.Text = "Data was successfully sorted using an insertion sort";
-        }
 
-        private void buttonInsertionSortB_Click(object sender, EventArgs e)
-        {
-            ClearTextBoxes();
-            LoadData();
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
-            InsertionSort(dataSensorB);
-            stopwatch.Stop();
-            //ShowAllSensorData();
-            DisplayListBoxData(dataSensorB, listBoxB);
-            textBoxTimeInsertionB.Text = String.Format("{0:0.00} ms", stopwatch.Elapsed.TotalMilliseconds);
-            toolStripStatusLabel1.Text = "Data was successfully sorted using an insertion sort";
-        }
-        #endregion
-
+        /* 4.9	Create a method called “BinarySearchIterative” which has the following four parameters: LinkedList, 
+         * SearchValue, Minimum and Maximum. This method will return an integer of the linkedlist element 
+         * from a successful search or the nearest neighbour value. The calling code argument is the linkedlist 
+         * name, search value, minimum list size and the number of nodes in the list. The method code must 
+         * follow the pseudo code supplied below in the Appendix.
+         */
         #region Method: binary search iterative
         private int BinarySearchIterative(LinkedList<double> linkedListName, double searchValue, int min, int max)
         {
@@ -293,6 +275,60 @@ namespace Satellite_Data_Processing_Project
             return min;
         }
         #endregion
+
+        /* 4.10	Create a method called “BinarySearchRecursive” which has the following four parameters: LinkedList, 
+         * SearchValue, Minimum and Maximum. This method will return an integer of the linkedlist element 
+         * from a successful search or the nearest neighbour value. The calling code argument is the linkedlist 
+         * name, search value, minimum list size and the number of nodes in the list. The method code must 
+         * follow the pseudo code supplied below in the Appendix.
+         */
+        #region Method: binary search recursive
+        private int BinarySearchRecursive(LinkedList<double> linkedListName, double searchValue, int min, int max)
+        {
+            if (min <= max - 1)
+            {
+                int mid = (min + max) / 2;
+                if (searchValue == linkedListName.ElementAt(mid))
+                {
+                    return mid;
+                }
+                else if (searchValue < linkedListName.ElementAt(mid))
+                {
+                    return BinarySearchRecursive(linkedListName, searchValue, min, mid - 1);
+                }
+                else
+                {
+                    return BinarySearchRecursive(linkedListName, searchValue, mid + 1, max);
+
+                }
+            }
+            return min;
+        }
+        #endregion
+
+        /* 4.11	Create four button click methods that will search the LinkedList for a value entered into a textbox on 
+         * the form. The four methods are:
+         *      1.	Method for Sensor A and Binary Search Iterative
+         *      2.	Method for Sensor A and Binary Search Recursive
+         *      3.	Method for Sensor B and Binary Search Iterative
+         *      4.	Method for Sensor B and Binary Search Recursive
+         * The search code must check to ensure the data is sorted, then start a stopwatch before calling the 
+         * search method. Once the search is complete the stopwatch will stop and the number of ticks will be 
+         * displayed in a read only textbox. Finally, the code will call the “DisplayListboxData” method and 
+         * highlight the appropriate number (or the next closest number). 
+         */
+
+        /* 4.12	Create four button click methods that will sort the LinkedList using the Selection and Insertion 
+         * methods. The four methods are:
+         *      1.	Method for Sensor A and Selection Sort
+         *      2.	Method for Sensor A and Insertion Sort
+         *      3.	Method for Sensor B and Selection Sort
+         *      4.	Method for Sensor B and Insertion Sort
+         * The button method must start a stopwatch before calling the sort method. Once the sort is complete
+         * the stopwatch will stop and the number of milliseconds will be displayed in a read only textbox. 
+         * Finally, the code will call the “ShowAllSensorData” method and “DisplayListboxData” for the 
+         * appropriate sensor.
+         */
         #region Button: iterative search A & B
 
         private void ButtonIterativeSearchA_Click(object sender, EventArgs e)
@@ -306,7 +342,7 @@ namespace Satellite_Data_Processing_Project
                         DisplayAll();
                         Stopwatch stopwatch = new Stopwatch();
                         stopwatch.Start();
-                        int index = BinarySearchIterative(dataSensorA, int.Parse(textBoxSearchTargetA.Text), 0, NumberOfNodes(dataSensorA));
+                        int index = BinarySearchIterative(dataSensorA, double.Parse(textBoxSearchTargetA.Text), 0, NumberOfNodes(dataSensorA));
                         stopwatch.Stop();
                         HighlightSearchIndex(index, dataSensorA, listBoxA);
                         textBoxTimeIterativeA.Text = String.Format("{0} ticks", stopwatch.Elapsed.Ticks);
@@ -337,7 +373,7 @@ namespace Satellite_Data_Processing_Project
                         DisplayAll();
                         Stopwatch stopwatch = new Stopwatch();
                         stopwatch.Start();
-                        int index = BinarySearchIterative(dataSensorB, int.Parse(textBoxSearchTargetB.Text), 0, NumberOfNodes(dataSensorB));
+                        int index = BinarySearchIterative(dataSensorB, double.Parse(textBoxSearchTargetB.Text), 0, NumberOfNodes(dataSensorB));
                         stopwatch.Stop();
                         HighlightSearchIndex(index, dataSensorB, listBoxB);
                         textBoxTimeIterativeB.Text = String.Format("{0} ticks", stopwatch.Elapsed.Ticks);
@@ -358,30 +394,6 @@ namespace Satellite_Data_Processing_Project
             }
         }
         #endregion
-
-        #region Method: binary search recursive
-        private int BinarySearchRecursive(LinkedList<double> linkedListName, double searchValue, int min, int max)
-        {
-            if (min <= max - 1)
-            {
-                int mid = (min + max) / 2;
-                if (searchValue == linkedListName.ElementAt(mid))
-                {
-                    return mid;
-                }
-                else if (searchValue < linkedListName.ElementAt(mid))
-                {
-                    return BinarySearchRecursive(linkedListName, searchValue, min, mid - 1);
-                }
-                else
-                {
-                    return BinarySearchRecursive(linkedListName, searchValue, mid + 1, max);
-
-                }
-            }
-            return min;
-        }
-        #endregion
         #region Button: binary search recursive A & B
         private void ButtonRecursiveSearchA_Click(object sender, EventArgs e)
         {
@@ -394,7 +406,7 @@ namespace Satellite_Data_Processing_Project
                         DisplayAll();
                         Stopwatch stopwatch = new Stopwatch();
                         stopwatch.Start();
-                        int index = BinarySearchRecursive(dataSensorA, int.Parse(textBoxSearchTargetA.Text), 0, NumberOfNodes(dataSensorA));
+                        int index = BinarySearchRecursive(dataSensorA, double.Parse(textBoxSearchTargetA.Text), 0, NumberOfNodes(dataSensorA));
                         stopwatch.Stop();
                         HighlightSearchIndex(index, dataSensorA, listBoxA);
                         textBoxTimeRecursiveA.Text = String.Format("{0:0.00} ms", stopwatch.Elapsed.TotalMilliseconds);
@@ -425,7 +437,7 @@ namespace Satellite_Data_Processing_Project
                         DisplayAll();
                         Stopwatch stopwatch = new Stopwatch();
                         stopwatch.Start();
-                        int index = BinarySearchRecursive(dataSensorB, int.Parse(textBoxSearchTargetB.Text), 0, NumberOfNodes(dataSensorB));
+                        int index = BinarySearchRecursive(dataSensorB, double.Parse(textBoxSearchTargetB.Text), 0, NumberOfNodes(dataSensorB));
                         stopwatch.Stop();
                         HighlightSearchIndex(index, dataSensorB, listBoxB);
                         textBoxTimeRecursiveB.Text = String.Format("{0:0.00} ms", stopwatch.Elapsed.TotalMilliseconds);
@@ -446,7 +458,74 @@ namespace Satellite_Data_Processing_Project
             }
         }
         #endregion
+        #region Button: selection sort A & B
+        // Start time, execute method, stop time, display data, fill time box
+        private void ButtonSelectionSortA_Click(object sender, EventArgs e)
+        {
+            ClearTextBoxes();
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start(); ;
+            SelectionSort(dataSensorA);
+            stopwatch.Stop();
+            //ShowAllSensorData();
+            DisplayListBoxData(dataSensorA, listBoxA);
+            textBoxTimeSelectionA.Text = String.Format("{0:0.##} ms", stopwatch.Elapsed.TotalMilliseconds);
+            toolStripStatusLabel1.Text = "Data was successfully sorted using a selection sort";
+        }
 
+        private void buttonSelectionSortB_Click(object sender, EventArgs e)
+        {
+            ClearTextBoxes();
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            SelectionSort(dataSensorB);
+            stopwatch.Stop();
+            //ShowAllSensorData();
+            DisplayListBoxData(dataSensorB, listBoxB);
+            textBoxTimeSelectionB.Text = String.Format("{0:0.##} ms", stopwatch.Elapsed.TotalMilliseconds);
+            toolStripStatusLabel1.Text = "Data was successfully sorted using a selection sort";
+        }
+        #endregion
+        #region Button: insertion sort A & B
+        private void buttonInsertionSortA_Click(object sender, EventArgs e)
+        {
+            ClearTextBoxes();
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            InsertionSort(dataSensorA);
+            stopwatch.Stop();
+            //ShowAllSensorData();
+            DisplayListBoxData(dataSensorA, listBoxA);
+            textBoxTimeInsertionA.Text = String.Format("{0:0.00} ms", stopwatch.Elapsed.TotalMilliseconds);
+            toolStripStatusLabel1.Text = "Data was successfully sorted using an insertion sort";
+        }
 
+        private void buttonInsertionSortB_Click(object sender, EventArgs e)
+        {
+            ClearTextBoxes();
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            InsertionSort(dataSensorB);
+            stopwatch.Stop();
+            //ShowAllSensorData();
+            DisplayListBoxData(dataSensorB, listBoxB);
+            textBoxTimeInsertionB.Text = String.Format("{0:0.00} ms", stopwatch.Elapsed.TotalMilliseconds);
+            toolStripStatusLabel1.Text = "Data was successfully sorted using an insertion sort";
+        }
+        #endregion
+
+        /* 4.13	Add two NumericUpDown controls for Sigma and Mu. The value for Sigma must be limited with a 
+         * minimum of 10 and a maximum of 20. Set the default value to 10. The value for Mu must be limited 
+         * with a minimum of 35 and a maximum of 75. Set the default value to 50.
+         */
+
+        /* 4.14	Add two textboxes for the search value; one for each sensor, ensure only numeric values can be 
+         * entered.
+         */
+
+        /* 4.15	All code is required to be adequately commented. Map the programming criteria and features to 
+         * your code/methods by adding comments above the method signatures. Ensure your code is 
+         * compliant with the CITEMS coding standards (refer http://www.citems.com.au/).
+         */
     }
 }

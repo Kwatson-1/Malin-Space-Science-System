@@ -374,6 +374,7 @@
             this.textBoxSearchTargetA.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.textBoxSearchTargetA.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxSearchTargetA.Location = new System.Drawing.Point(126, 43);
+            this.textBoxSearchTargetA.MaxLength = 9;
             this.textBoxSearchTargetA.Name = "textBoxSearchTargetA";
             this.textBoxSearchTargetA.Size = new System.Drawing.Size(119, 20);
             this.textBoxSearchTargetA.TabIndex = 0;
@@ -449,6 +450,7 @@
             // 
             this.textBoxSearchTargetB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxSearchTargetB.Location = new System.Drawing.Point(6, 43);
+            this.textBoxSearchTargetB.MaxLength = 9;
             this.textBoxSearchTargetB.Name = "textBoxSearchTargetB";
             this.textBoxSearchTargetB.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.textBoxSearchTargetB.Size = new System.Drawing.Size(119, 20);

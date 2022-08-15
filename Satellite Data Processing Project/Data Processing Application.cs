@@ -72,7 +72,7 @@ namespace Satellite_Data_Processing_Project
             DisplayListBoxData(dataSensorA, listBoxA);
             DisplayListBoxData(dataSensorB, listBoxB);
             ClearTextBoxes();
-            toolStripStatusLabel1.Text = "Sensors' data cleared, new data generated.";
+            toolStripStatusLabel1.Text = "Sensors' data cleared and new data generated.";
         }
         #endregion
         /* 4.3	Create a custom method called “ShowAllSensorData” which will display both LinkedLists in a 
@@ -178,6 +178,7 @@ namespace Satellite_Data_Processing_Project
         }
         #endregion
         #region Method: clear all text boxes
+        // Method for clearing all text boxes in a single call - used when calling the load data button.
         public void ClearTextBoxes()
         {
             textBoxSearchTargetA.Clear();

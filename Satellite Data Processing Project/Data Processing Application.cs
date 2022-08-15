@@ -198,6 +198,7 @@ namespace Satellite_Data_Processing_Project
          */
         #region Method: selection sort
         // Implements a selection method for sorting the target double linked list. Returns true if the sort was executed.
+        // Coded as per client requirements.
         private bool SelectionSort(LinkedList<double> linkedListName)
         {
             int min = 0;
@@ -227,6 +228,8 @@ namespace Satellite_Data_Processing_Project
          * below in the Appendix. The return type is Boolean.
          */
         #region Method: insertion sort
+        // Implements an insertion method for sorting the target double linked list. Returns true if the sort was executed.
+        // Coded as per client requirements.
         private bool InsertionSort(LinkedList<double> linkedListName)
         {
             int max = NumberOfNodes(linkedListName);
@@ -254,6 +257,7 @@ namespace Satellite_Data_Processing_Project
          * follow the pseudo code supplied below in the Appendix.
          */
         #region Method: binary search iterative
+        // Method coded as per client requirements. The parameters accept a double value from text box inputs.
         private int BinarySearchIterative(LinkedList<double> linkedListName, double searchValue, int min, int max)
         {
             while (min <= max - 1)
@@ -283,6 +287,7 @@ namespace Satellite_Data_Processing_Project
          * follow the pseudo code supplied below in the Appendix.
          */
         #region Method: binary search recursive
+        // Method coded as per client requirements. The parameters accept a double value from text box inputs.
         private int BinarySearchRecursive(LinkedList<double> linkedListName, double searchValue, int min, int max)
         {
             if (min <= max - 1)
@@ -333,25 +338,34 @@ namespace Satellite_Data_Processing_Project
 
         private void ButtonIterativeSearchA_Click(object sender, EventArgs e)
         {
+            // The stop watch starts, the search method is called, the stopwatch is stopped, the displays are updated and the text box is filled.
+            // Try catches first check there is data in the linked list, then sorts the linked list and checks there is data in the search target text box.
             try
             {
-                if (!string.IsNullOrEmpty(textBoxSearchTargetA.Text))
+                if (NumberOfNodes(dataSensorA) > 0)
                 {
-                    if (SelectionSort(dataSensorA))
+                    if (!string.IsNullOrEmpty(textBoxSearchTargetA.Text))
                     {
-                        DisplayAll();
-                        Stopwatch stopwatch = new Stopwatch();
-                        stopwatch.Start();
-                        int index = BinarySearchIterative(dataSensorA, double.Parse(textBoxSearchTargetA.Text), 0, NumberOfNodes(dataSensorA));
-                        stopwatch.Stop();
-                        HighlightSearchIndex(index, dataSensorA, listBoxA);
-                        textBoxTimeIterativeA.Text = String.Format("{0} ticks", stopwatch.Elapsed.Ticks);
-                        toolStripStatusLabel1.Text = String.Format("Iterative search returned index {0} as the value closest to the search target", index);
+                        if (SelectionSort(dataSensorA))
+                        {
+                            DisplayAll();
+                            Stopwatch stopwatch = new Stopwatch();
+                            stopwatch.Start();
+                            int index = BinarySearchIterative(dataSensorA, double.Parse(textBoxSearchTargetA.Text), 0, NumberOfNodes(dataSensorA));
+                            stopwatch.Stop();
+                            HighlightSearchIndex(index, dataSensorA, listBoxA);
+                            textBoxTimeIterativeA.Text = String.Format("{0} ticks", stopwatch.Elapsed.Ticks);
+                            toolStripStatusLabel1.Text = String.Format("Iterative search returned index {0} as the value closest to the search target", index);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error: please enter a valid value before searching.");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Error: please enter a valid value before searching.");
+                    MessageBox.Show("Error: there is no data to search.");
                 }
             }
             catch (Exception ex)
@@ -364,25 +378,34 @@ namespace Satellite_Data_Processing_Project
         }
         private void ButtonIterativeSearchB_Click(object sender, EventArgs e)
         {
+            // The stop watch starts, the search method is called, the stopwatch is stopped, the displays are updated and the text box is filled.
+            // Try catches first check there is data in the linked list, then sorts the linked list and checks there is data in the search target text box.
             try
             {
-                if (!string.IsNullOrEmpty(textBoxSearchTargetB.Text))
+                if (NumberOfNodes(dataSensorA) > 0)
                 {
-                    if (SelectionSort(dataSensorB))
+                    if (!string.IsNullOrEmpty(textBoxSearchTargetB.Text))
                     {
-                        DisplayAll();
-                        Stopwatch stopwatch = new Stopwatch();
-                        stopwatch.Start();
-                        int index = BinarySearchIterative(dataSensorB, double.Parse(textBoxSearchTargetB.Text), 0, NumberOfNodes(dataSensorB));
-                        stopwatch.Stop();
-                        HighlightSearchIndex(index, dataSensorB, listBoxB);
-                        textBoxTimeIterativeB.Text = String.Format("{0} ticks", stopwatch.Elapsed.Ticks);
-                        toolStripStatusLabel1.Text = String.Format("Iterative search returned index {0} as the value closest to the search target", index);
+                        if (SelectionSort(dataSensorB))
+                        {
+                            DisplayAll();
+                            Stopwatch stopwatch = new Stopwatch();
+                            stopwatch.Start();
+                            int index = BinarySearchIterative(dataSensorB, double.Parse(textBoxSearchTargetB.Text), 0, NumberOfNodes(dataSensorB));
+                            stopwatch.Stop();
+                            HighlightSearchIndex(index, dataSensorB, listBoxB);
+                            textBoxTimeIterativeB.Text = String.Format("{0} ticks", stopwatch.Elapsed.Ticks);
+                            toolStripStatusLabel1.Text = String.Format("Iterative search returned index {0} as the value closest to the search target", index);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error: please enter the value you wish to search.");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Error: please enter the value you wish to search.");
+                    MessageBox.Show("Error: there is no data to search.");
                 }
             }
             catch (Exception ex)
@@ -395,27 +418,36 @@ namespace Satellite_Data_Processing_Project
         }
         #endregion
         #region Button: binary search recursive A & B
+        // The stop watch starts, the search method is called, the stopwatch is stopped, the displays are updated and the text box is filled.
+        // Try catches first check there is data in the linked list, then sorts the linked list and checks there is data in the search target text box.
         private void ButtonRecursiveSearchA_Click(object sender, EventArgs e)
         {
             try
             {
-                if (InsertionSort(dataSensorA))
+                if (NumberOfNodes(dataSensorA) > 0)
                 {
-                    if (!string.IsNullOrEmpty(textBoxSearchTargetA.Text))
+                    if (InsertionSort(dataSensorA))
                     {
-                        DisplayAll();
-                        Stopwatch stopwatch = new Stopwatch();
-                        stopwatch.Start();
-                        int index = BinarySearchRecursive(dataSensorA, double.Parse(textBoxSearchTargetA.Text), 0, NumberOfNodes(dataSensorA));
-                        stopwatch.Stop();
-                        HighlightSearchIndex(index, dataSensorA, listBoxA);
-                        textBoxTimeRecursiveA.Text = String.Format("{0:0.00} ms", stopwatch.Elapsed.TotalMilliseconds);
-                        toolStripStatusLabel1.Text = String.Format("Recursive search returned index {0} as the value closest to the search target", index);
+                        if (!string.IsNullOrEmpty(textBoxSearchTargetA.Text))
+                        {
+                            DisplayAll();
+                            Stopwatch stopwatch = new Stopwatch();
+                            stopwatch.Start();
+                            int index = BinarySearchRecursive(dataSensorA, double.Parse(textBoxSearchTargetA.Text), 0, NumberOfNodes(dataSensorA));
+                            stopwatch.Stop();
+                            HighlightSearchIndex(index, dataSensorA, listBoxA);
+                            textBoxTimeRecursiveA.Text = String.Format("{0:0.00} ms", stopwatch.Elapsed.TotalMilliseconds);
+                            toolStripStatusLabel1.Text = String.Format("Recursive search returned index {0} as the value closest to the search target", index);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error: please enter the value you wish to search.");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Error: please enter the value you wish to search.");
+                    MessageBox.Show("Error: there is no data to search.");
                 }
             }
             catch (Exception ex)
@@ -428,25 +460,34 @@ namespace Satellite_Data_Processing_Project
         }
         private void ButtonRecursiveSearchB_Click(object sender, EventArgs e)
         {
+            // The stop watch starts, the search method is called, the stopwatch is stopped, the displays are updated and the text box is filled.
+            // Try catches first check there is data in the linked list, then sorts the linked list and checks there is data in the search target text box.
             try
             {
-                if (InsertionSort(dataSensorB))
+                if (NumberOfNodes(dataSensorA) > 0)
                 {
-                    if (!string.IsNullOrEmpty(textBoxSearchTargetB.Text))
+                    if (InsertionSort(dataSensorB))
                     {
-                        DisplayAll();
-                        Stopwatch stopwatch = new Stopwatch();
-                        stopwatch.Start();
-                        int index = BinarySearchRecursive(dataSensorB, double.Parse(textBoxSearchTargetB.Text), 0, NumberOfNodes(dataSensorB));
-                        stopwatch.Stop();
-                        HighlightSearchIndex(index, dataSensorB, listBoxB);
-                        textBoxTimeRecursiveB.Text = String.Format("{0:0.00} ms", stopwatch.Elapsed.TotalMilliseconds);
-                        toolStripStatusLabel1.Text = String.Format("Recursive search returned index {0} as the value closest to the search target", index);
+                        if (!string.IsNullOrEmpty(textBoxSearchTargetB.Text))
+                        {
+                            DisplayAll();
+                            Stopwatch stopwatch = new Stopwatch();
+                            stopwatch.Start();
+                            int index = BinarySearchRecursive(dataSensorB, double.Parse(textBoxSearchTargetB.Text), 0, NumberOfNodes(dataSensorB));
+                            stopwatch.Stop();
+                            HighlightSearchIndex(index, dataSensorB, listBoxB);
+                            textBoxTimeRecursiveB.Text = String.Format("{0:0.00} ms", stopwatch.Elapsed.TotalMilliseconds);
+                            toolStripStatusLabel1.Text = String.Format("Recursive search returned index {0} as the value closest to the search target", index);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error: please enter the value you wish to search.");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Error: please enter the value you wish to search.");
+                    MessageBox.Show("Error: there is no data to search.");
                 }
             }
             catch (Exception ex)
@@ -459,58 +500,85 @@ namespace Satellite_Data_Processing_Project
         }
         #endregion
         #region Button: selection sort A & B
-        // Start time, execute method, stop time, display data, fill time box
+        // The stop watch starts, the sort method is called, the stopwatch is stopped, the displays are updated and the text box is filled.
         private void ButtonSelectionSortA_Click(object sender, EventArgs e)
         {
-            ClearTextBoxes();
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start(); ;
-            SelectionSort(dataSensorA);
-            stopwatch.Stop();
-            //ShowAllSensorData();
-            DisplayListBoxData(dataSensorA, listBoxA);
-            textBoxTimeSelectionA.Text = String.Format("{0:0.##} ms", stopwatch.Elapsed.TotalMilliseconds);
-            toolStripStatusLabel1.Text = "Data was successfully sorted using a selection sort";
+            if (NumberOfNodes(dataSensorA) > 0)
+            {
+                Stopwatch stopwatch = new Stopwatch();
+                stopwatch.Start(); ;
+                SelectionSort(dataSensorA);
+                stopwatch.Stop();
+                //ShowAllSensorData();
+                DisplayListBoxData(dataSensorA, listBoxA);
+                textBoxTimeSelectionA.Text = String.Format("{0:0.##} ms", stopwatch.Elapsed.TotalMilliseconds);
+                toolStripStatusLabel1.Text = "Data was successfully sorted using a selection sort";
+            }
+            else
+            {
+                MessageBox.Show("Error: there is no data to sort.");
+            }
         }
 
         private void buttonSelectionSortB_Click(object sender, EventArgs e)
         {
-            ClearTextBoxes();
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
-            SelectionSort(dataSensorB);
-            stopwatch.Stop();
-            //ShowAllSensorData();
-            DisplayListBoxData(dataSensorB, listBoxB);
-            textBoxTimeSelectionB.Text = String.Format("{0:0.##} ms", stopwatch.Elapsed.TotalMilliseconds);
-            toolStripStatusLabel1.Text = "Data was successfully sorted using a selection sort";
+            // The stop watch starts, the sort method is called, the stopwatch is stopped, the displays are updated and the text box is filled.
+            if (NumberOfNodes(dataSensorA) > 0)
+            {
+                Stopwatch stopwatch = new Stopwatch();
+                stopwatch.Start();
+                SelectionSort(dataSensorB);
+                stopwatch.Stop();
+                //ShowAllSensorData();
+                DisplayListBoxData(dataSensorB, listBoxB);
+                textBoxTimeSelectionB.Text = String.Format("{0:0.##} ms", stopwatch.Elapsed.TotalMilliseconds);
+                toolStripStatusLabel1.Text = "Data was successfully sorted using a selection sort";
+            }
+            else
+            {
+                MessageBox.Show("Error: there is no data to sort.");
+            }
         }
         #endregion
         #region Button: insertion sort A & B
+        // The stop watch starts, the sort method is called, the stopwatch is stopped, the displays are updated and the text box is filled.
         private void buttonInsertionSortA_Click(object sender, EventArgs e)
         {
-            ClearTextBoxes();
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
-            InsertionSort(dataSensorA);
-            stopwatch.Stop();
-            //ShowAllSensorData();
-            DisplayListBoxData(dataSensorA, listBoxA);
-            textBoxTimeInsertionA.Text = String.Format("{0:0.00} ms", stopwatch.Elapsed.TotalMilliseconds);
-            toolStripStatusLabel1.Text = "Data was successfully sorted using an insertion sort";
+            if (NumberOfNodes(dataSensorA) > 0)
+            {
+                Stopwatch stopwatch = new Stopwatch();
+                stopwatch.Start();
+                InsertionSort(dataSensorA);
+                stopwatch.Stop();
+                //ShowAllSensorData();
+                DisplayListBoxData(dataSensorA, listBoxA);
+                textBoxTimeInsertionA.Text = String.Format("{0:0.00} ms", stopwatch.Elapsed.TotalMilliseconds);
+                toolStripStatusLabel1.Text = "Data was successfully sorted using an insertion sort";
+            }
+            else
+            {
+                MessageBox.Show("Error: there is no data to sort.");
+            }
         }
 
         private void buttonInsertionSortB_Click(object sender, EventArgs e)
         {
-            ClearTextBoxes();
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
-            InsertionSort(dataSensorB);
-            stopwatch.Stop();
-            //ShowAllSensorData();
-            DisplayListBoxData(dataSensorB, listBoxB);
-            textBoxTimeInsertionB.Text = String.Format("{0:0.00} ms", stopwatch.Elapsed.TotalMilliseconds);
-            toolStripStatusLabel1.Text = "Data was successfully sorted using an insertion sort";
+            // The stop watch starts, the sort method is called, the stopwatch is stopped, the displays are updated and the text box is filled.
+            if (NumberOfNodes(dataSensorA) > 0)
+            {
+                Stopwatch stopwatch = new Stopwatch();
+                stopwatch.Start();
+                InsertionSort(dataSensorB);
+                stopwatch.Stop();
+                //ShowAllSensorData();
+                DisplayListBoxData(dataSensorB, listBoxB);
+                textBoxTimeInsertionB.Text = String.Format("{0:0.00} ms", stopwatch.Elapsed.TotalMilliseconds);
+                toolStripStatusLabel1.Text = "Data was successfully sorted using an insertion sort";
+            }
+            else
+            {
+                MessageBox.Show("Error: there is no data to sort.");
+            }
         }
         #endregion
 
